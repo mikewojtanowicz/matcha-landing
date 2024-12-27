@@ -1,0 +1,41 @@
+@keyframes flowingGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.flowing-gradient {
+  background: linear-gradient(
+    to right,
+    #4ade80,
+    #34d399,
+    #10b981,
+    #34d399,
+    #4ade80
+  );
+  background-size: 200% auto;
+  animation: flowingGradient 6s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.flowing-gradient-gold {
+  background: linear-gradient(
+    to right,
+    #fbbf24,
+    #f59e0b,
+    #d97706,
+    #f59e0b,
+    #fbbf24
+  );
+  background-size: 200% auto;
+  animation: flowingGradient 6s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+} 
