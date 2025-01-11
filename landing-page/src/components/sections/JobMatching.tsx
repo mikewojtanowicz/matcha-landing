@@ -41,8 +41,8 @@ export default function JobMatching() {
       setTimeout(() => {
         setCurrentIndex((current) => (current + 1) % mockJobs.length)
         setDirection(0)
-      }, 500)
-    }, 4000)
+      }, 400)
+    }, 3000)
 
     return () => clearInterval(interval)
   }, [])
@@ -69,7 +69,11 @@ export default function JobMatching() {
               initial={{ x: 300, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -300, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              transition={{ 
+                type: "spring", 
+                stiffness: 400, 
+                damping: 25
+              }}
               className="w-[340px] bg-black/60 backdrop-blur-lg rounded-xl p-6
                          border-2 border-emerald-500/20 shadow-[0_0_15px_rgba(52,211,153,0.1)]"
             >

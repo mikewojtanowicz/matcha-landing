@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import CandidateAnalysis from './CandidateAnalysis'
 import JobMatching from './JobMatching'
 import ScreeningAutomation from './ScreeningAutomation'
@@ -38,26 +39,68 @@ export default function TabSection() {
         </div>
       </div>
 
-      {/* Content - Just basic padding, no height constraints */}
+      {/* Content */}
       <div className="max-w-7xl mx-auto px-4">
         {activeTab === 'applicants' ? (
           <div>
-            <div className="py-32">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ 
+                margin: "-10% 0px -10% 0px",
+                amount: 0.3
+              }}
+              transition={{ 
+                duration: 0.6,
+                ease: "easeOut"
+              }}
+              className="py-32"
+            >
               <CandidateAnalysis />
-            </div>
-            <div className="py-32">
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ 
+                margin: "-10% 0px -10% 0px",
+                amount: 0.3
+              }}
+              transition={{ 
+                duration: 0.6,
+                ease: "easeOut"
+              }}
+              className="py-32"
+            >
               <JobMatching />
-            </div>
-            <div className="py-32">
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ 
+                margin: "-10% 0px -10% 0px",
+                amount: 0.3
+              }}
+              transition={{ 
+                duration: 0.6,
+                ease: "easeOut"
+              }}
+              className="py-32"
+            >
               <ScreeningAutomation />
-            </div>
+            </motion.div>
           </div>
         ) : (
-          <div className="py-20">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="py-20"
+          >
             <div className="text-gray-400 text-center">
               Employers content coming soon
             </div>
-          </div>
+          </motion.div>
         )}
       </div>
     </div>
