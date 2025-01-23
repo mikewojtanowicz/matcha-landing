@@ -152,8 +152,8 @@ export default function JobSwiper() {
           className="relative"
         >
           <motion.div
-            className="w-[340px] h-[480px] bg-black/40 backdrop-blur-lg rounded-3xl p-6 border border-emerald-500/10
-                       shadow-[0_0_50px_-12px] shadow-emerald-500/10"
+            className="w-[340px] h-[480px] bg-black/40 backdrop-blur-lg rounded-3xl p-6 border shadow-matcha-500/10
+                       shadow-[0_0_50px_-12px] shadow-matcha-500/10"
             animate={{
               boxShadow: direction === 0 
                 ? '0 0 50px -12px rgba(52, 211, 153, 0.1)'
@@ -174,7 +174,7 @@ export default function JobSwiper() {
               <h3 className="text-2xl font-bold text-white mb-2">
                 {mockJobs[currentIndex].title}
               </h3>
-              <p className="text-emerald-400 text-lg mb-4">
+              <p className="text-matcha-400 text-lg mb-4">
                 {mockJobs[currentIndex].company}
               </p>
               <p className="text-gray-400 mb-2">
@@ -188,7 +188,7 @@ export default function JobSwiper() {
                 {mockJobs[currentIndex].tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1 rounded-full text-sm bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
+                    className="px-3 py-1 rounded-full text-sm bg-matcha-500/10 text-matcha-400 border border-matcha-500/20"
                   >
                     {tag}
                   </span>
@@ -230,14 +230,14 @@ export default function JobSwiper() {
       </AnimatePresence>
 
       <div className="absolute top-4 left-1/2 -translate-x-1/2 -z-10 opacity-30 scale-95">
-        <div className="w-[340px] h-[480px] bg-black/40 backdrop-blur-lg rounded-3xl p-6 border border-emerald-500/10">
+        <div className="w-[340px] h-[480px] bg-black/40 backdrop-blur-lg rounded-3xl p-6 border border-matcha-500/10">
           <div className="h-full flex flex-col">
             <CompanyLogo company={mockJobs[nextIndex].company} />
             
             <h3 className="text-2xl font-bold text-white mb-2">
               {mockJobs[nextIndex].title}
             </h3>
-            <p className="text-emerald-400 text-lg mb-4">
+            <p className="text-matcha-400 text-lg mb-4">
               {mockJobs[nextIndex].company}
             </p>
             <p className="text-gray-400 mb-2">
@@ -251,7 +251,7 @@ export default function JobSwiper() {
               {mockJobs[nextIndex].tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 rounded-full text-sm bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
+                  className="px-3 py-1 rounded-full text-sm bg-matcha-500/10 text-matcha-400 border border-matcha-500/20"
                 >
                   {tag}
                 </span>

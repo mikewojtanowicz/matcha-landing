@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import '@/styles/animations.css'
 
 const montserrat = Montserrat({ subsets: ["latin"] });
+const jakarta = Plus_Jakarta_Sans({ 
+  subsets: ["latin"],
+  variable: "--font-jakarta"
+});
 
 export const metadata: Metadata = {
   title: "Matcha | AI-Powered Job Matching Platform",
@@ -17,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${montserrat.className} bg-black text-white`}>
+      <body className={`${montserrat.className} ${jakarta.variable} bg-stone-50 text-stone-800 font-sans`}>
         {children}
       </body>
     </html>

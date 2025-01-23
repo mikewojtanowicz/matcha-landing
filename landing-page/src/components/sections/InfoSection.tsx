@@ -21,19 +21,19 @@ export default function InfoSection() {
           </h2>
           <ul className="space-y-6 text-gray-300">
             <li className="flex items-start">
-              <span className="mr-4 text-emerald-400">→</span>
+              <span className="mr-4 text-matcha-400">→</span>
               <span>AI-powered job matching based on your skills, experience, and preferences</span>
             </li>
             <li className="flex items-start">
-              <span className="mr-4 text-emerald-400">→</span>
+              <span className="mr-4 text-matcha-400">→</span>
               <span>Automated interview scheduling with potential employers</span>
             </li>
             <li className="flex items-start">
-              <span className="mr-4 text-emerald-400">→</span>
+              <span className="mr-4 text-matcha-400">→</span>
               <span>Practice with AI-generated screening questions specific to your field</span>
             </li>
             <li className="flex items-start">
-              <span className="mr-4 text-emerald-400">→</span>
+              <span className="mr-4 text-matcha-400">→</span>
               <span>Real-time application status tracking and feedback</span>
             </li>
           </ul>
@@ -41,7 +41,7 @@ export default function InfoSection() {
       </div>
 
       {/* Divider */}
-      <div className="w-px bg-gradient-to-b from-transparent via-emerald-500/50 to-transparent mx-auto"></div>
+      <div className="w-px bg-gradient-to-b from-transparent via-matcha-500/50 to-transparent mx-auto"></div>
 
       {/* Employers Side */}
       <div 
@@ -57,19 +57,19 @@ export default function InfoSection() {
           </h2>
           <ul className="space-y-6 text-gray-300">
             <li className="flex items-start">
-              <span className="mr-4 text-emerald-400">→</span>
+              <span className="mr-4 text-matcha-400">→</span>
               <span>Smart candidate matching using AI to find the perfect fit</span>
             </li>
             <li className="flex items-start">
-              <span className="mr-4 text-emerald-400">→</span>
+              <span className="mr-4 text-matcha-400">→</span>
               <span>Automated screening question generation based on job requirements</span>
             </li>
             <li className="flex items-start">
-              <span className="mr-4 text-emerald-400">→</span>
+              <span className="mr-4 text-matcha-400">→</span>
               <span>Intelligent scheduling system for interviews and follow-ups</span>
             </li>
             <li className="flex items-start">
-              <span className="mr-4 text-emerald-400">→</span>
+              <span className="mr-4 text-matcha-400">→</span>
               <span>Data-driven insights on candidate pool and hiring process</span>
             </li>
           </ul>

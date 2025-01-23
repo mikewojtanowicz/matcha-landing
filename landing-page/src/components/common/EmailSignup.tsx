@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 
-export default function EmailSignup() {
+export default function EmailSignup({ className = "" }) {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
 
@@ -21,8 +21,8 @@ export default function EmailSignup() {
   }
 
   return (
-    <div className="mt-8">
-      <form onSubmit={handleSubmit} className="relative max-w-xl">
+    <div className={`mt-6 ${className}`}>
+      <form onSubmit={handleSubmit} className="relative max-w-md mx-auto">
         <div className="relative flex items-center">
           <input
             type="email"
@@ -30,7 +30,8 @@ export default function EmailSignup() {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
             disabled={status === 'submitting' || status === 'success'}
-            className="flex-1 px-0 py-2 bg-transparent text-white placeholder:text-gray-400
+            className="flex-1 px-0 py-1.5 bg-transparent text-white text-sm
+                     placeholder:text-gray-400 placeholder:text-sm
                      focus:outline-none
                      disabled:opacity-50 disabled:cursor-not-allowed"
           />
@@ -39,15 +40,15 @@ export default function EmailSignup() {
             disabled={!email || status !== 'idle'}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="text-emerald-400 font-medium text-sm tracking-wider pl-4
+            className="text-matcha-400 font-medium text-xs tracking-wider pl-4
                      disabled:opacity-50 disabled:cursor-not-allowed
-                     hover:text-emerald-300 transition-colors whitespace-nowrap"
+                     hover:text-matcha-300 transition-colors whitespace-nowrap"
           >
             {status === 'submitting' ? (
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                className="w-4 h-4 border-2 border-emerald-400 border-t-transparent rounded-full"
+                className="w-3 h-3 border-2 border-matcha-400 border-t-transparent rounded-full"
               />
             ) : status === 'success' ? (
               "THANK YOU"
@@ -58,7 +59,7 @@ export default function EmailSignup() {
         </div>
 
         {/* Single Line Under Both Input and Button */}
-        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-500/20" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-matcha-500/20" />
 
         {/* Status Messages */}
         <motion.div
@@ -67,7 +68,7 @@ export default function EmailSignup() {
             opacity: status === 'error' ? 1 : 0,
             y: status === 'error' ? 0 : 10
           }}
-          className="absolute left-0 right-0 top-full mt-4 text-sm"
+          className="absolute left-0 right-0 top-full mt-2 text-xs"
         >
           {status === 'error' && (
             <span className="text-red-400">

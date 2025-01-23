@@ -2,10 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Remove any scroll behavior modifications */
-html,
-body {
-  overflow-x: hidden;
+:root {
+  --background: 48 47% 98%;
+  --foreground: 20 14.3% 4.1%;
+}
+
+@layer base {
+  body {
+    @apply antialiased;
+    color: rgb(var(--foreground));
+    background: rgb(var(--background));
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-stone-800 font-medium;
+  }
+
+  /* Custom scrollbar styles */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgb(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-matcha-200 rounded-full hover:bg-matcha-300 transition-colors;
+  }
+
+  html, body {
+    @apply w-full min-w-full m-0 p-0 overflow-x-hidden;
+  }
+
+  section {
+    @apply w-full min-w-full m-0 p-0;
+  }
+
+  /* Remove any potential margin between sections */
+  section + section {
+    margin-top: 0;
+  }
 }
 
 @layer utilities {
@@ -13,7 +50,70 @@ body {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+  
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
+  .hover-lift {
+    @apply transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-soft;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-6 py-3 rounded-lg transition-all duration-300 ease-in-out font-medium;
+  }
+
+  .btn-primary {
+    @apply bg-matcha-500 text-white hover:bg-matcha-600 
+           shadow-sm hover:shadow-md transition-all duration-300;
+  }
+
+  .btn-secondary {
+    @apply bg-cream-100 text-stone-800 hover:bg-cream-200
+           shadow-sm hover:shadow-md transition-all duration-300;
+  }
+
+  .card {
+    @apply bg-white rounded-xl p-6 shadow-soft transition-all duration-300 ease-in-out 
+           hover:-translate-y-1 hover:shadow-soft;
+  }
+
+  .input {
+    @apply px-4 py-2 rounded-lg border border-stone-200 
+           focus:border-matcha-300 focus:ring-2 focus:ring-matcha-100 
+           outline-none transition-all duration-300;
+  }
+
+  .section {
+    @apply px-6 py-24 md:px-12 lg:px-24;
+  }
+
+  .section-light {
+    @apply bg-stone-50;
+  }
+
+  .section-dark {
+    @apply bg-stone-100/95;
+  }
+}
+
+/* Custom scrollbar for a softer look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-matcha-200 rounded-full hover:bg-matcha-300 transition-colors;
+}
+
+/* Remove any scroll behavior modifications */
+html,
+body {
+  overflow-x: hidden;
 } 

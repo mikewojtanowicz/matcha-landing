@@ -13,11 +13,26 @@
 .flowing-gradient {
   background: linear-gradient(
     to right,
-    #4ade80,
-    #34d399,
-    #10b981,
-    #34d399,
-    #4ade80
+    #76ab70,
+    #598f53,
+    #467242,
+    #598f53,
+    #76ab70
+  );
+  background-size: 200% auto;
+  animation: flowingGradient 3s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.flowing-gradient-gold {
+  background: linear-gradient(
+    to right,
+    #d4af37,
+    #f4cd6c,
+    #d4af37,
+    #f4cd6c,
+    #d4af37
   );
   background-size: 200% auto;
   animation: flowingGradient 3s ease infinite;

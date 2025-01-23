@@ -28,7 +28,7 @@ export default function Home() {
   }
 
   return (
-    <main className="bg-black">
+    <main>
       <Navigation />
       <div className="h-screen">
         <TerminalIntro onComplete={handleAnimationComplete} />
