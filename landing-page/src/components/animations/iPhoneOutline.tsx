@@ -25,12 +25,12 @@ const outlineVariants: Variants = {
 }
 
 const phoneContentVariants: Variants = {
-  initial: { opacity: 0, scale: 0.98 },
+  initial: { opacity: 0, scale: 0.95 },
   animate: {
     opacity: 1,
     scale: 1,
     transition: {
-      duration: 1,
+      duration: 0.8,
       ease: 'easeOut',
       delay: 2.5,
     },

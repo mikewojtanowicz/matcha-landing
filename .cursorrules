@@ -29,15 +29,15 @@ ANALYSIS PROCESS
 SOLUTION PLANNING
 ------------------------------------------------------------------------------
 1. Architecture Overview
-   - Use a “component-based” architecture: break down UI into reusable building 
+   - Use a "component-based" architecture: break down UI into reusable building 
      blocks (e.g., Button, Card, Layout, Header).
    - Centralize theme management in Tailwind config (colors, spacing, fonts).
-   - Emphasize fluid transitions and animations using Tailwind’s transition & 
+   - Emphasize fluid transitions and animations using Tailwind's transition & 
      animation utilities or small, focused animation libraries (e.g., Framer Motion, 
      if necessary).
 
 2. Layout & Navigation
-   - Adopt responsive design from the start, using Tailwind’s responsive classes 
+   - Adopt responsive design from the start, using Tailwind's responsive classes 
      (e.g., sm:, md:, lg:) to ensure consistent breakpoints.
    - Keep navigation simple and visible. Avoid deep nesting or ambiguous icons.
 
@@ -139,7 +139,7 @@ IMPLEMENTATION STRATEGY
   ```
 
 3. Fluid Animations & Advanced Effects
-- Use Tailwind’s built-in utilities for simple transitions:
+- Use Tailwind's built-in utilities for simple transitions:
   ```
   hover:scale-105 focus:scale-95 transition-transform duration-200
   ```
@@ -165,7 +165,7 @@ IMPLEMENTATION STRATEGY
 - Test with keyboard navigation and screen readers.
 
 5. Performance Best Practices
-- Keep bundle size small by importing only what’s needed from libraries.
+- Keep bundle size small by importing only what's needed from libraries.
 - Use code splitting or lazy loading for heavy or rarely used components.
 - Minimize re-renders by memoizing expensive computations (`useMemo`, `useCallback`).
 - Preload key data or fonts to reduce perceived load time.
@@ -186,14 +186,14 @@ CODE STYLE & STRUCTURE
 
 3. Tailwind Usage
 - Start with utility classes to style quickly.
-- Abstract repeated styles into “component classes” or dedicated components 
+- Abstract repeated styles into "component classes" or dedicated components 
   if duplication becomes excessive.
 - Use `className` props for customizing base components.
 
 4. Naming Conventions
 - Use descriptive prop names (e.g., `isLoading`, `variant`).
-- Prefix event handlers with “handle” (`handleClick`, `handleSubmit`).
-- For booleans, use prefixes like “is”, “has”, “can”, or “should”.
+- Prefix event handlers with "handle" (`handleClick`, `handleSubmit`).
+- For booleans, use prefixes like "is", "has", "can", or "should".
 
 5. Folder Organization
 - Group related files together for easy discoverability.

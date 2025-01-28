@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import TerminalIntro from "@/components/sections/TerminalIntro"
 import TabSection from "@/components/sections/TabSection"
-import Navigation from "@/components/common/Navigation"
 
 export default function Home() {
   const [showTabs, setShowTabs] = useState(false)
@@ -29,7 +28,6 @@ export default function Home() {
 
   return (
     <main>
-      <Navigation />
       <div className="h-screen">
         <TerminalIntro onComplete={handleAnimationComplete} />
       </div>
