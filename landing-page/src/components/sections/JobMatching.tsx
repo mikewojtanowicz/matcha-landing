@@ -71,7 +71,7 @@ export default function JobMatching() {
 
       {/* Right side - Card Swiper */}
       <div className="flex items-center justify-center">
-        <div className="relative w-[340px]">
+        <div className="relative w-[90vw] max-w-[340px] mx-auto">
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={currentIndex}
@@ -84,7 +84,7 @@ export default function JobMatching() {
                 damping: 25
               }}
               onAnimationComplete={handleAnimationComplete}
-              className="w-[340px] bg-black/60 backdrop-blur-lg rounded-xl p-6
+              className="w-full bg-black/60 backdrop-blur-lg rounded-xl p-4 sm:p-6
                          border-2 border-matcha-500/20 shadow-[0_0_15px_rgba(52,211,153,0.1)]"
             >
               <div className="space-y-4">

@@ -23,15 +23,15 @@ export default function EmailSignup({ className = "" }) {
   return (
     <div className={`mt-6 ${className}`}>
       <form onSubmit={handleSubmit} className="relative max-w-md mx-auto">
-        <div className="relative flex items-center">
+        <div className="relative flex items-center px-4">
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
             disabled={status === 'submitting' || status === 'success'}
-            className="flex-1 px-0 py-1.5 bg-transparent text-white text-sm
-                     placeholder:text-gray-400 placeholder:text-sm
+            className="flex-1 px-0 py-1.5 bg-transparent text-matcha-800 text-sm
+                     placeholder:text-matcha-800/60 placeholder:text-sm
                      focus:outline-none
                      disabled:opacity-50 disabled:cursor-not-allowed"
           />
@@ -40,15 +40,15 @@ export default function EmailSignup({ className = "" }) {
             disabled={!email || status !== 'idle'}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="text-matcha-400 font-medium text-xs tracking-wider pl-4
+            className="text-matcha-800 font-medium text-xs tracking-wider pl-4
                      disabled:opacity-50 disabled:cursor-not-allowed
-                     hover:text-matcha-300 transition-colors whitespace-nowrap"
+                     hover:text-matcha-600 transition-colors whitespace-nowrap"
           >
             {status === 'submitting' ? (
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                className="w-3 h-3 border-2 border-matcha-400 border-t-transparent rounded-full"
+                className="w-3 h-3 border-2 border-matcha-800 border-t-transparent rounded-full"
               />
             ) : status === 'success' ? (
               "THANK YOU"

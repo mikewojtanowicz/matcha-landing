@@ -26,11 +26,11 @@
   .flowing-gradient {
     background: linear-gradient(
       to right,
+      #a6cc65,
       #76ab70,
-      #598f53,
-      #467242,
-      #598f53,
-      #76ab70
+      #366802,
+      #76ab70,
+      #a6cc65
     );
     background-size: 200% auto;
     animation: flowingGradient 6s ease infinite;

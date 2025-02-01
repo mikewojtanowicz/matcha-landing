@@ -49,7 +49,7 @@ export default function HeroSection() {
   return (
     <section className="w-screen min-w-screen bg-stone-100">
       <div className="w-full max-w-6xl mx-auto px-6 py-24">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+        <div className="flex flex-col lg:flex-row items-start justify-between gap-12">
           {/* ----------------- Content Column ----------------- */}
           <div className="flex-1 max-w-2xl xl:max-w-3xl space-y-8">
             {/* View Toggle */}
@@ -95,11 +95,11 @@ export default function HeroSection() {
               </div>
             </motion.div>
 
-            {/* Value Proposition Headline */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
+              className="min-h-[120px]"
             >
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight">
                 {activeView === 'candidate' ? (
@@ -114,12 +114,11 @@ export default function HeroSection() {
               </h1>
             </motion.div>
 
-            {/* Marketing-focused Content */}
             <motion.div 
               key={activeView}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="space-y-6"
+              className="flex flex-col gap-8"
             >
               <p className="text-xl text-stone-700 leading-relaxed">
                 {activeView === 'candidate' 
@@ -127,7 +126,7 @@ export default function HeroSection() {
                   : "Join the future of recruitment with our self-optimizing ecosystem:"}
               </p>
 
-              <ul className="space-y-4 pl-6">
+              <ul className="space-y-4 pl-6 min-h-[160px]">
                 {activeView === 'candidate' ? (
                   <>
                     <motion.li 
@@ -152,17 +151,17 @@ export default function HeroSection() {
                     <motion.li 
                       initial={{ x: -10 }}
                       animate={{ x: 0 }}
-                      className="relative text-stone-800 before:absolute before:-left-6 before:top-2 before:w-2 before:h-2 before:bg-cream-500 before:rounded-full"
+                      className="relative text-stone-800 before:absolute before:-left-6 before:top-2 before:w-2 before:h-2 before:bg-matcha-500 before:rounded-full"
                     >
-                      <strong className="text-cream-700">Self-Optimizing AI:</strong><br/>
+                      <strong className="text-matcha-700">Self-Optimizing AI:</strong><br/>
                       Our system learns from both successful and unsuccessful placements
                     </motion.li>
                     <motion.li 
                       initial={{ x: -10 }}
                       animate={{ x: 0 }}
-                      className="relative text-stone-800 before:absolute before:-left-6 before:top-2 before:w-2 before:h-2 before:bg-cream-500 before:rounded-full"
+                      className="relative text-stone-800 before:absolute before:-left-6 before:top-2 before:w-2 before:h-2 before:bg-matcha-500 before:rounded-full"
                     >
-                      <strong className="text-cream-700">Unified Environment:</strong><br/>
+                      <strong className="text-matcha-700">Unified Environment:</strong><br/>
                       Both parties benefit from shared data and seamless interaction
                     </motion.li>
                   </>
@@ -263,19 +262,16 @@ export default function HeroSection() {
                   </linearGradient>
                 </defs>
 
-                {/* Main phone outline */}
                 <motion.path
                   d="M40 0h200a40 40 0 0 1 40 40v440a40 40 0 0 1-40 40H40a40 40 0 0 1-40-40V40a40 40 0 0 1 40-40z"
                   variants={outlineVariants}
                 />
 
-                {/* Screen outline */}
                 <motion.path
                   d="M44 4h192a36 36 0 0 1 36 36v440a36 36 0 0 1-36 36H44a36 36 0 0 1-36-36V40a36 36 0 0 1 36-36z"
                   variants={outlineVariants}
                 />
 
-                {/* Notch - matches the actual rendered div */}
                 <motion.path
                   d="
                     M85 0
@@ -296,30 +292,20 @@ export default function HeroSection() {
                 className="absolute inset-0 flex items-center justify-center"
                 variants={phoneContentVariants}
               >
-                {/* 
-                  Phone is exactly 280×520 so the outline 
-                  and phone corners match perfectly when scaled.
-                */}
                 <div className="relative w-[280px] h-[520px]">
-                  {/* Notch */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[110px] h-[25px] bg-black rounded-b-[10px] z-20">
                     <div className="w-full h-full bg-black rounded-b-[10px] overflow-hidden">
-                      {/* Optional: Add camera/sensor dot if needed */}
                       <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-stone-600 rounded-full" />
                     </div>
                   </div>
 
-                  {/* Outer Frame (rounded 40px corners) */}
                   <div className="absolute inset-0 bg-black rounded-[40px] shadow-2xl" />
 
-                  {/* Screen Content (inset 4px, corners 36px) */}
                   <div className="absolute inset-[4px] bg-stone-100 rounded-[36px] overflow-hidden">
                     <div className="relative w-full h-full bg-gradient-to-b from-matcha-400/5 to-cream-200/20">
-                      {/* Status Bar */}
                       <div className="h-12 flex items-center justify-between px-6">
                         <span className="text-sm font-medium">9:41</span>
                         <div className="flex items-center gap-2">
-                          {/* Example icons */}
                           <svg
                             className="w-4 h-4"
                             viewBox="0 0 24 24"
@@ -353,7 +339,6 @@ export default function HeroSection() {
                             </div>
                           </div>
                         </motion.div>
-                        {/* ...additional mock items... */}
                       </div>
                     </div>
                   </div>

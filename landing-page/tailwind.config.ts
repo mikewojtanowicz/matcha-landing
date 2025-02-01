@@ -8,19 +8,23 @@ const config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'primary': ['All Round Gothic', 'sans-serif'],
+        'body': ['Inter', 'system-ui', 'sans-serif'],
+      },
       colors: {
-        // Primary matcha colors
+        // Updated green colors based on provided values
         matcha: {
-          50: '#f2f7f1',
-          100: '#e4efe2',
-          200: '#c8dfc5',
-          300: '#98c293',
-          400: '#76ab70',
-          500: '#598f53',
-          600: '#467242',
-          700: '#385a37',
-          800: '#2f482f',
-          900: '#283c28',
+          50: '#f5f9f0',
+          100: '#e8f2e0',
+          200: '#d1e5c2',
+          300: '#a6cc65', // Light green as provided
+          400: '#8fb84d',
+          500: '#71a330',
+          600: '#538c1c',
+          700: '#447410',
+          800: '#366802', // Dark green as provided
+          900: '#2a5401',
         },
         // Updated cream colors to be more off-white
         cream: {
@@ -57,7 +61,7 @@ const config = {
         'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
       },
       gradients: {
-        'terminal': 'linear-gradient(145deg, var(--tw-gradient-stops))',
+        'terminal': 'linear-gradient(145deg, #a6cc65, #366802)', // Updated with new green colors
       },
     },
   },

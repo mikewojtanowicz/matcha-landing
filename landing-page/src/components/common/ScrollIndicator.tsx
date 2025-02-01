@@ -9,7 +9,7 @@ interface ScrollIndicatorProps {
 export default function ScrollIndicator({ onClick }: ScrollIndicatorProps) {
   return (
     <motion.div 
-      className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer"
+      className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 cursor-pointer"
       initial={{ opacity: 0, y: -10 }}
       animate={{ 
         opacity: [0.4, 1, 0.4],

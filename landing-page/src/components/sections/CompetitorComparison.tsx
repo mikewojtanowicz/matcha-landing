@@ -116,16 +116,16 @@ export default function CompetitorComparison() {
       location: "New York, NY",
       users: "Coming Soon",
       description: "One unified platform that works for both sides of the hiring equation. We don't just connect employers with talent, we Matcha candidates with the opportunity that is right for them.",
-      gradient: "from-[#467242] via-[#598f53] to-[#76ab70]",
-      textGradient: "from-[#598f53] via-[#76ab70] to-[#598f53]",
+      gradient: "from-[#a6cc65] via-[#76ab70] to-[#366802]",
+      textGradient: "from-[#366802] via-[#366802] to-[#366802]",
     }
   ]
 
   const companyLogos = {
-    linkedin: '/logos/linkedin-logo.svg',
-    ziprecruiter: '/logos/ziprecruiter-logo.svg',
+    linkedin: '/logos/linkedin-logo.png',
+    ziprecruiter: '/logos/ziprecruiter-logo.png',
     indeed: '/logos/indeed-logo.svg',
-    matcha: '/logos/matcha-logo.svg'
+    matcha: '/logos/matcha-logo.png'
   }
 
   // Swipe handler
@@ -202,37 +202,57 @@ export default function CompetitorComparison() {
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-stone-200">
-                    <th className="py-4 px-6 text-left w-1/3">Feature</th>
+                    <th className="py-8 px-6 text-left w-1/3">Feature</th>
                     {/* Updated Company Headers */}
                     {['linkedin', 'ziprecruiter', 'indeed', 'matcha'].map((company) => (
-                      <th key={company} className="py-4 px-6 text-center">
+                      <th key={company} className="py-8 px-6 text-center">
                         <motion.div
                           as="div"
                           whileHover={{ scale: 1.05 }}
-                          className="inline-flex flex-col items-center"
+                          className="inline-flex flex-col items-center space-y-4"
                         >
                           {company === 'matcha' ? (
-                            <>
-                              <span className="text-2xl font-bold text-matcha-500 mb-2">Matcha</span>
-                              <span className="text-sm text-matcha-600">That's us!</span>
-                            </>
+                            <div className="flex flex-col items-center">
+                              <div className="h-6 w-6 relative mb-6">
+                                <Image 
+                                  src="/logos/matcha-icon.png"
+                                  alt="Matcha icon"
+                                  width={24}
+                                  height={24}
+                                />
+                              </div>
+                              <div className="h-7 relative mb-1">
+                                <Image
+                                  src="/logos/matcha-title-standard.png"
+                                  alt="Matcha"
+                                  width={100}
+                                  height={28}
+                                  className="object-contain"
+                                />
+                              </div>
+                              <span className="text-sm text-matcha-800">That's us!</span>
+                            </div>
                           ) : (
-                            <>
-                              <div className="h-8 w-8 mb-2 relative">
+                            <div className="flex flex-col items-center">
+                              <div className="h-6 w-6 relative mb-6">
                                 <Image 
                                   src={companyLogos[company as keyof typeof companyLogos]}
                                   alt={`${company} logo`}
-                                  width={32}
-                                  height={32}
+                                  width={24}
+                                  height={24}
                                   className={`opacity-70 ${
-                                    company === 'ziprecruiter' ? 'scale-150' : ''
+                                    company === 'ziprecruiter' 
+                                      ? 'scale-[3.5]'
+                                      : company === 'linkedin' || company === 'indeed'
+                                        ? 'scale-[1.5]'
+                                        : ''
                                   }`}
                                 />
                               </div>
-                              <span className="text-sm text-stone-600">
+                              <span className="text-base font-medium text-stone-600 mb-[21px]">
                                 {company.charAt(0).toUpperCase() + company.slice(1)}
                               </span>
-                            </>
+                            </div>
                           )}
                         </motion.div>
                       </th>
@@ -299,27 +319,6 @@ export default function CompetitorComparison() {
                 </tbody>
               </table>
             </div>
-
-            {/* Bottom CTA */}
-            <motion.div
-              as="div"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mt-16"
-            >
-              <p className="text-lg text-stone-600 mb-6">
-                Ready to experience the future of recruitment?
-              </p>
-              <motion.button
-                as="button"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="btn btn-primary text-lg px-8 py-3"
-              >
-                Get Started with Matcha
-              </motion.button>
-            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -337,7 +336,7 @@ export default function CompetitorComparison() {
       animate={{ opacity: shouldAnimate ? 1 : 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="relative w-[400px] h-[500px]">
+      <div className="relative w-[90vw] max-w-[340px] h-[480px] rounded-2xl shadow-xl overflow-hidden">
         <motion.div
           key={currentIndex}
           initial={{ x: 0, rotate: 0, opacity: 0 }}
@@ -368,25 +367,9 @@ export default function CompetitorComparison() {
             bg-gradient-to-br ${platforms[currentIndex].gradient}
             border-2 border-white/20 shadow-xl
           `}>
-            {/* Logo Section */}
-            <div className="w-40 h-12 relative mb-8">
-              {platforms[currentIndex].name.toLowerCase() === 'matcha' ? (
-                <span className="text-3xl font-bold text-white">Matcha</span>
-              ) : (
-                <div className="relative w-full h-full">
-                  <Image
-                    src={companyLogos[platforms[currentIndex].name.toLowerCase() as keyof typeof companyLogos]}
-                    alt={platforms[currentIndex].name}
-                    fill
-                    className="object-contain"
-                    style={{ filter: 'brightness(0) invert(1)' }}
-                    priority
-                  />
-                </div>
-              )}
-            </div>
-
-            <div className="space-y-4">
+            {/* Header Section with Logo and Title */}
+            <div className="flex justify-between items-start mb-8">
+              {/* Title Section */}
               <div>
                 <h3 className={`
                   text-xl font-bold bg-gradient-to-r ${platforms[currentIndex].textGradient}
@@ -399,6 +382,35 @@ export default function CompetitorComparison() {
                 </p>
               </div>
 
+              {/* Logo Section */}
+              <div className="w-24 h-16 relative flex items-center justify-end pr-4">
+                {platforms[currentIndex].name.toLowerCase() === 'matcha' ? (
+                  <Image
+                    src="/logos/matcha-icon.png"
+                    alt="Matcha"
+                    width={48}
+                    height={48}
+                    className="object-contain"
+                  />
+                ) : (
+                  <Image
+                    src={companyLogos[platforms[currentIndex].name.toLowerCase() as keyof typeof companyLogos]}
+                    alt={platforms[currentIndex].name}
+                    width={48}
+                    height={48}
+                    className={`object-contain ${
+                      platforms[currentIndex].name.toLowerCase() === 'linkedin' 
+                        ? 'opacity-90'
+                        : platforms[currentIndex].name.toLowerCase() === 'ziprecruiter'
+                          ? 'brightness-0 invert opacity-100 scale-[2.5] -translate-x-2'
+                          : 'brightness-0 invert opacity-100'
+                    }`}
+                  />
+                )}
+              </div>
+            </div>
+
+            <div className="space-y-4">
               <div className="space-y-2">
                 <p className="text-white/70">
                   👥 Users: {platforms[currentIndex].users}

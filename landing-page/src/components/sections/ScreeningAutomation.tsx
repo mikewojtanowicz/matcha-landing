@@ -23,8 +23,8 @@ export default function ScreeningAutomation() {
 
   return (
     <section className="w-full min-w-full bg-cream-50 min-w-[100vw]">
-      <div className="py-24 px-6 max-w-6xl mx-auto">
-        <div className="grid grid-cols-2 gap-12">
+      <div className="py-12 md:py-24 px-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {/* Left side - Content */}
           <div className="space-y-6">
             <h2 className="flowing-gradient-gold text-transparent bg-clip-text text-4xl md:text-5xl font-bold">

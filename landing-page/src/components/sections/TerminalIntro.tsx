@@ -109,20 +109,19 @@ export default function TerminalIntro({ onComplete }: { onComplete?: () => void 
           className="relative z-10 flex flex-col items-center"
           variants={containerVariants}
         >
-          {/* -- Heading with responsive sizing & hover scale -- */}
-          <motion.h1
-            className="font-bold mb-6 bg-clip-text text-transparent
-                       bg-gradient-to-r from-matcha-600 via-matcha-400 to-matcha-600
-                       drop-shadow-sm cursor-pointer
-                       text-6xl md:text-8xl lg:text-[120px]
-                       transition-colors duration-300
-                       hover:from-matcha-500 hover:via-matcha-300 hover:to-matcha-500"
+          {/* -- Title image with responsive sizing & hover scale -- */}
+          <motion.div
+            className="mb-6 cursor-pointer"
             variants={itemVariants}
             whileHover={{ scale: 1.03 }}
             transition={{ duration: 0.2 }}
           >
-            Matcha
-          </motion.h1>
+            <img
+              src="/logos/matcha-title.png"
+              alt="Matcha"
+              className="h-[60px] md:h-[80px] lg:h-[120px] w-auto"
+            />
+          </motion.div>
 
           {/* -- Tagline -- */}
           <motion.p
