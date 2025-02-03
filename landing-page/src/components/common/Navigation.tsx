@@ -342,36 +342,3 @@ export default function Navigation() {
     </div>
   );
 }
-
-// <div className="relative z-50">
-//   {/* Navigation buttons */}
-//   <div className="absolute top-8 left-8 flex items-center text-base tracking-wider">
-//     <span className="text-stone-400 text-lg">[</span>
-//     <button
-//       onClick={() => setActiveModal('about')}
-//       className="px-4 py-2 text-stone-600 hover:text-stone-900 transition-colors duration-300 text-lg"
-//     >
-//       ABOUT
-//     </button>
-//     <span className="mx-2 text-stone-400 select-none text-lg">|</span>
-//     <button
-//       onClick={() => setActiveModal('contact')}
-//       className="px-4 py-2 text-stone-600 hover:text-stone-900 transition-colors duration-300 text-lg"
-//     >
-//       CONTACT
-//     </button>
-//     <span className="text-stone-400 text-lg">]</span>
-//   </div>
-
-//   {/* Countdown Timer */}
-//   <div className="absolute top-8 right-8 flex items-center text-base tracking-wider">
-//     <span className="text-stone-400 text-lg">[</span>
-//     <div className="px-4 py-2">
-//       <CountdownTimer />
-//     </div>
-//     <span className="text-stone-400 text-lg">]</span>
-//   </div>
-
-//   {/* Modal */}
-//   <AnimatePresence mode="wait">{renderModal()}</AnimatePresence>
-// </div>
