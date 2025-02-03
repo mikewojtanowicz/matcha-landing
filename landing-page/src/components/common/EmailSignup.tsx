@@ -30,10 +30,10 @@ export default function EmailSignup({ className = "" }) {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
             disabled={status === 'submitting' || status === 'success'}
-            className="flex-1 px-0 py-1.5 bg-transparent text-matcha-800 text-sm
-                     placeholder:text-matcha-800/60 placeholder:text-sm
+            className="flex-1 px-0 py-1.5 bg-transparent text-stone-800
+                     placeholder:text-stone-800/70
                      focus:outline-none
-                     disabled:opacity-50 disabled:cursor-not-allowed"
+                     disabled:opacity-50 disabled:cursor-not-allowed min-h-14"
           />
           <motion.button
             type="submit"
