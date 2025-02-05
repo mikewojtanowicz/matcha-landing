@@ -42,32 +42,30 @@ export default function Navigation() {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm">
-      <div className="flex justify-between items-center px-4 md:px-8 py-4 md:py-6">
+    <nav className="absolute top-0 left-0 right-0 z-50">
+      <div className="flex justify-between items-center px-4 md:px-8 pt-6 md:pt-8">
         {/* Logo */}
         <div className="relative w-24 md:w-32">
           {/* Your logo */}
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
-          <span className={`text-stone-400 ${isMobile ? 'text-[12px] mr-1' : 'text-2xl mr-4'}`}>[</span>
+        <div className="hidden md:flex items-center gap-4">
+          <span className="text-stone-400 text-2xl mr-4">[</span>
           <button
             onClick={() => setActiveModal('about')}
-            className={`text-stone-600 hover:text-stone-800 transition-colors
-              ${isMobile ? 'text-[10px] px-1.5 py-0.5' : 'text-base px-4 py-2'}`}
+            className="text-stone-600 hover:text-stone-800 transition-colors text-base px-4 py-2"
           >
             About
           </button>
-          <span className={`text-stone-400 ${isMobile ? 'mx-1' : 'mx-4'}`}>|</span>
+          <span className="text-stone-400 mx-4">|</span>
           <button
             onClick={() => setActiveModal('contact')}
-            className={`text-stone-600 hover:text-stone-800 transition-colors
-              ${isMobile ? 'text-[10px] px-1.5 py-0.5' : 'text-base px-4 py-2'}`}
+            className="text-stone-600 hover:text-stone-800 transition-colors text-base px-4 py-2"
           >
             Contact
           </button>
-          <span className={`text-stone-400 ${isMobile ? 'text-[12px] ml-1' : 'text-2xl ml-4'}`}>]</span>
+          <span className="text-stone-400 text-2xl ml-4">]</span>
         </div>
 
         {/* Mobile Menu Button */}
@@ -92,16 +90,27 @@ export default function Navigation() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="absolute top-full left-0 right-0 bg-white shadow-lg"
+              className="absolute top-full left-0 right-0 bg-white/80 backdrop-blur-sm shadow-lg"
             >
               <div className="p-4 space-y-4">
-                {/* Mobile menu items */}
-                <a href="#" className="block py-2 text-stone-800 hover:text-matcha-600">
+                <button
+                  onClick={() => {
+                    setActiveModal('about')
+                    setIsMenuOpen(false)
+                  }}
+                  className="block w-full py-2 text-stone-800 hover:text-matcha-600 text-left"
+                >
                   About
-                </a>
-                <a href="#" className="block py-2 text-stone-800 hover:text-matcha-600">
+                </button>
+                <button
+                  onClick={() => {
+                    setActiveModal('contact')
+                    setIsMenuOpen(false)
+                  }}
+                  className="block w-full py-2 text-stone-800 hover:text-matcha-600 text-left"
+                >
                   Contact
-                </a>
+                </button>
               </div>
             </motion.div>
           )}
