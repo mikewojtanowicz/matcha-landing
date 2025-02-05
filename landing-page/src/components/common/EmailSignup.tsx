@@ -11,21 +11,50 @@ export default function EmailSignup({ className = "" }) {
     e.preventDefault()
     setStatus('submitting')
     
-    // TODO: Implement actual email signup
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    setStatus('success')
-    setEmail('')
+    try {
+      const form = e.target as HTMLFormElement
+      const data = new FormData(form)
+      
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data as any).toString()
+      })
 
-    // Reset success message after 3 seconds
-    setTimeout(() => setStatus('idle'), 3000)
+      if (response.ok) {
+        setStatus('success')
+        setEmail('')
+        setTimeout(() => setStatus('idle'), 3000)
+      } else {
+        throw new Error('Form submission failed')
+      }
+    } catch (error) {
+      setStatus('error')
+      setTimeout(() => setStatus('idle'), 3000)
+    }
   }
 
   return (
     <div className={`mt-6 ${className}`}>
-      <form onSubmit={handleSubmit} className="relative max-w-md mx-auto">
+      <form 
+        name="email-signup"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        onSubmit={handleSubmit} 
+        className="relative max-w-md mx-auto"
+      >
+        {/* Netlify form requirements */}
+        <input type="hidden" name="form-name" value="email-signup" />
+        <div hidden>
+          <input name="bot-field" />
+        </div>
+
+        {/* Rest of your form JSX */}
         <div className="relative flex items-center px-4">
           <input
             type="email"
+            name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
@@ -34,6 +63,7 @@ export default function EmailSignup({ className = "" }) {
                      placeholder:text-matcha-800/60 placeholder:text-base
                      focus:outline-none
                      disabled:opacity-50 disabled:cursor-not-allowed"
+            required
           />
           <motion.button
             type="submit"
