@@ -205,15 +205,17 @@ export default function CompetitorComparison() {
   }, [currentIndex, isSlidingOut, shouldAnimate])
 
   const handleNext = () => {
-    setCurrentComparisonIndex((prev) => 
-      prev === comparisonVectors.length - 1 ? 0 : prev + 1
-    )
+    setCurrentComparisonIndex((prev) => {
+      const nextIndex = prev + 1;
+      return nextIndex >= features.length ? 0 : nextIndex;
+    });
   }
 
   const handlePrev = () => {
-    setCurrentComparisonIndex((prev) => 
-      prev === 0 ? comparisonVectors.length - 1 : prev - 1
-    )
+    setCurrentComparisonIndex((prev) => {
+      const nextIndex = prev - 1;
+      return nextIndex < 0 ? features.length - 1 : nextIndex;
+    });
   }
 
   if (showComparison) {
@@ -234,7 +236,7 @@ export default function CompetitorComparison() {
               {isMobile ? (
                 // Mobile revolving comparison
                 <div className="relative">
-                  <AnimatePresence mode="wait">
+                  <AnimatePresence mode="wait" initial={false}>
                     <motion.div
                       key={currentComparisonIndex}
                       initial={{ opacity: 0, x: 50 }}
@@ -307,7 +309,7 @@ export default function CompetitorComparison() {
                       ← Previous
                     </button>
                     <div className="flex gap-2">
-                      {features.map((_, index) => (
+                      {Array.from({ length: features.length }).map((_, index) => (
                         <div
                           key={index}
                           className={`w-2 h-2 rounded-full transition-colors duration-300 ${

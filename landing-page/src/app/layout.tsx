@@ -9,6 +9,10 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: "Matcha | AI-Powered Job Matching Platform",
   description: "Revolutionary AI-powered job matching and screening platform for applicants and employers",
+  icons: {
+    icon: '/logos/matcha-icon.png',
+    apple: '/logos/matcha-icon.png',
+  },
 };
 
 export default function RootLayout({
