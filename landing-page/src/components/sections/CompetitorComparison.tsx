@@ -186,11 +186,10 @@ export default function CompetitorComparison() {
             transition={{ duration: 0.5 }}
           >
             <motion.h2 
-              as="h2"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-bold text-center mb-16"
+              className="flowing-gradient-gold text-transparent bg-clip-text text-4xl md:text-5xl font-bold"
             >
               <span className="text-stone-900">Why Choose</span>{' '}
               <span className="flowing-gradient text-transparent bg-clip-text">
