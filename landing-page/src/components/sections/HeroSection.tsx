@@ -183,128 +183,126 @@ export default function HeroSection() {
           </div>
 
           {/* ----------------- iPhone Animation Column ----------------- */}
-          {!isMobile && (
-            <div className="flex-1 max-w-xl xl:max-w-2xl">
-              <motion.div
-                ref={ref}
-                className="relative h-[520px]"
-                variants={iPhoneVariants}
-                initial="initial"
-                animate={isInView ? "animate" : "initial"}
+          <div className={`${isMobile ? 'w-full' : 'flex-1 max-w-xl xl:max-w-2xl'}`}>
+            <motion.div
+              ref={ref}
+              className={`relative h-[520px] ${isMobile ? 'flex justify-center' : ''}`}
+              variants={iPhoneVariants}
+              initial="initial"
+              animate={isInView ? "animate" : "initial"}
+            >
+              {/* 1) The Outline-Tracing SVG */}
+              <motion.svg
+                className="absolute inset-0 m-auto"
+                width="280"
+                height="520"
+                viewBox="0 0 280 520"
+                fill="none"
+                stroke="url(#animatedGradient)"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                variants={outlineVariants}
               >
-                {/* 1) The Outline-Tracing SVG */}
-                <motion.svg
-                  className="absolute inset-0 m-auto"
-                  width="280"
-                  height="520"
-                  viewBox="0 0 280 520"
-                  fill="none"
-                  stroke="url(#animatedGradient)"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  variants={outlineVariants}
-                >
-                  {/* Gradient Definition */}
-                  <defs>
-                    <linearGradient
-                      id="animatedGradient"
-                      gradientUnits="userSpaceOnUse"
-                      x1="0%"
-                      y1="0%"
-                      x2="100%"
-                      y2="0%"
-                    >
-                      <stop offset="0%" stopColor="#598F53">
-                        <animate
-                          attributeName="offset"
-                          values="-0.75;1.25"
-                          dur="2s"
-                          repeatCount="indefinite"
-                          keyTimes="0;1"
-                          calcMode="spline"
-                          keySplines="0.4 0 0.2 1"
-                        />
-                      </stop>
-                      <stop offset="50%" stopColor="#598F53">
-                        <animate
-                          attributeName="offset"
-                          values="-0.25;1.75"
-                          dur="2s"
-                          repeatCount="indefinite"
-                          keyTimes="0;1"
-                          calcMode="spline"
-                          keySplines="0.4 0 0.2 1"
-                        />
-                      </stop>
-                      <stop offset="50%" stopColor="#C5A47E">
-                        <animate
-                          attributeName="offset"
-                          values="0.25;2.25"
-                          dur="2s"
-                          repeatCount="indefinite"
-                          keyTimes="0;1"
-                          calcMode="spline"
-                          keySplines="0.4 0 0.2 1"
-                        />
-                      </stop>
-                      <stop offset="100%" stopColor="#C5A47E">
-                        <animate
-                          attributeName="offset"
-                          values="0.75;2.75"
-                          dur="2s"
-                          repeatCount="indefinite"
-                          keyTimes="0;1"
-                          calcMode="spline"
-                          keySplines="0.4 0 0.2 1"
-                        />
-                      </stop>
-                    </linearGradient>
-                  </defs>
-
-                  {/* Updated Outer Frame: Matches the iPhone container (280×520 with 30px radius) */}
-                  <motion.path
-                    d="M30 0 H250 A30 30 0 0 1 280 30 V490 A30 30 0 0 1 250 520 H30 A30 30 0 0 1 0 490 V30 A30 30 0 0 1 30 0z"
-                    variants={outlineVariants}
-                  />
-
-                  {/* Updated Inner Frame: Matches the inset display (inset by 4px, 272×512 with 26px radius) */}
-                  <motion.path
-                    d="M30 4 H250 A26 26 0 0 1 276 30 V490 A26 26 0 0 1 250 516 H30 A26 26 0 0 1 4 490 V30 A26 26 0 0 1 30 4z"
-                    variants={outlineVariants}
-                  />
-                </motion.svg>
-
-                <motion.div
-                  className="absolute inset-0 flex items-center justify-center"
-                  variants={phoneContentVariants}
-                >
-                  <div className="relative w-[280px] h-[520px]">
-                    {/* --- Outer Frame: Titanium-Inspired Finish --- */}
-                    <div className="absolute inset-0 bg-gray-800 rounded-[30px] shadow-2xl" />
-
-                  {/* --- Inner Display (Screen) --- */}
-                  <div className="absolute inset-[4px] bg-stone-100 rounded-[26px] overflow-hidden flex items-center justify-center">
-                  <motion.video
-                    initial={{ opacity: 0, scale: 1 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 4.5, duration: 0.5 }}
-                    className="absolute inset-0 w-full h-full object-cover"
-                    style={{ objectPosition: '50% 80%' }} // Adjust vertical position (80% down from the top)
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
+                {/* Gradient Definition */}
+                <defs>
+                  <linearGradient
+                    id="animatedGradient"
+                    gradientUnits="userSpaceOnUse"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="0%"
                   >
-                    <source src="/videos/matcha_demo.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </motion.video>
-                  </div>
-                  </div>
-                </motion.div>
+                    <stop offset="0%" stopColor="#598F53">
+                      <animate
+                        attributeName="offset"
+                        values="-0.75;1.25"
+                        dur="2s"
+                        repeatCount="indefinite"
+                        keyTimes="0;1"
+                        calcMode="spline"
+                        keySplines="0.4 0 0.2 1"
+                      />
+                    </stop>
+                    <stop offset="50%" stopColor="#598F53">
+                      <animate
+                        attributeName="offset"
+                        values="-0.25;1.75"
+                        dur="2s"
+                        repeatCount="indefinite"
+                        keyTimes="0;1"
+                        calcMode="spline"
+                        keySplines="0.4 0 0.2 1"
+                      />
+                    </stop>
+                    <stop offset="50%" stopColor="#C5A47E">
+                      <animate
+                        attributeName="offset"
+                        values="0.25;2.25"
+                        dur="2s"
+                        repeatCount="indefinite"
+                        keyTimes="0;1"
+                        calcMode="spline"
+                        keySplines="0.4 0 0.2 1"
+                      />
+                    </stop>
+                    <stop offset="100%" stopColor="#C5A47E">
+                      <animate
+                        attributeName="offset"
+                        values="0.75;2.75"
+                        dur="2s"
+                        repeatCount="indefinite"
+                        keyTimes="0;1"
+                        calcMode="spline"
+                        keySplines="0.4 0 0.2 1"
+                      />
+                    </stop>
+                  </linearGradient>
+                </defs>
+
+                {/* Updated Outer Frame: Matches the iPhone container (280×520 with 30px radius) */}
+                <motion.path
+                  d="M30 0 H250 A30 30 0 0 1 280 30 V490 A30 30 0 0 1 250 520 H30 A30 30 0 0 1 0 490 V30 A30 30 0 0 1 30 0z"
+                  variants={outlineVariants}
+                />
+
+                {/* Updated Inner Frame: Matches the inset display (inset by 4px, 272×512 with 26px radius) */}
+                <motion.path
+                  d="M30 4 H250 A26 26 0 0 1 276 30 V490 A26 26 0 0 1 250 516 H30 A26 26 0 0 1 4 490 V30 A26 26 0 0 1 30 4z"
+                  variants={outlineVariants}
+                />
+              </motion.svg>
+
+              <motion.div
+                className="absolute inset-0 flex items-center justify-center"
+                variants={phoneContentVariants}
+              >
+                <div className="relative w-[280px] h-[520px]">
+                  {/* --- Outer Frame: Titanium-Inspired Finish --- */}
+                  <div className="absolute inset-0 bg-gray-800 rounded-[30px] shadow-2xl" />
+
+                {/* --- Inner Display (Screen) --- */}
+                <div className="absolute inset-[4px] bg-stone-100 rounded-[26px] overflow-hidden flex items-center justify-center">
+                <motion.video
+                  initial={{ opacity: 0, scale: 1 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 4.5, duration: 0.5 }}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  style={{ objectPosition: '50% 80%' }} // Adjust vertical position (80% down from the top)
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                >
+                  <source src="/videos/matcha_demo.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </motion.video>
+                </div>
+                </div>
               </motion.div>
-            </div>
-          )}
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
