@@ -99,7 +99,7 @@ export default function CompetitorSwiper({ onComplete }: { onComplete: () => voi
   return (
     <div className="relative w-[340px] mx-auto" style={{ height: 480 }}>
       <AnimatePresence initial={false} mode="wait">
-        <motion.div
+        <motion.article
           key={currentIndex}
           variants={cardVariants}
           initial="enter"
@@ -145,7 +145,7 @@ export default function CompetitorSwiper({ onComplete }: { onComplete: () => voi
               </div>
             </div>
           </div>
-        </motion.div>
+        </motion.article>
       </AnimatePresence>
     </div>
   )

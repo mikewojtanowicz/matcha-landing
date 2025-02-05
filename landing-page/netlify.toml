@@ -1,0 +1,16 @@
+[build]
+  command = "npm run build"
+  publish = "out"    # Change from .next to out for static export
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NEXT_USE_NETLIFY_EDGE = "true"
+  NEXT_FORCE_EDGE_IMAGES = "true"
+
+# Add this to handle client-side routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200 
