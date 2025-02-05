@@ -55,97 +55,69 @@ export default function ScreeningAutomation() {
                     duration: 0.5,
                     ease: "easeOut"
                   }}
-                  className="relative"
+                  className="relative overflow-hidden rounded-xl border border-matcha-500/20 
+                           bg-cream-100/80 backdrop-blur-sm p-6"
                 >
-                  {/* AI Processing Indicator */}
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: [0, 1, 0] }}
-                    transition={{
-                      delay: index * 0.5,
-                      duration: 0.3,
-                      times: [0, 0.5, 1]
-                    }}
-                    className="absolute -left-8 top-3"
-                  >
-                    <div className="w-3 h-3 rounded-full bg-matcha-400/60" />
-                  </motion.div>
-
-                  {/* Question Card */}
-                  <div className="bg-black/60 backdrop-blur-lg rounded-lg 
-                                border-2 border-matcha-500/20 p-4
-                                shadow-[0_0_15px_rgba(52,211,153,0.1)]"
-                  >
-                    <div className="text-matcha-400/60 text-sm mb-2 flex justify-between items-center">
-                      <span>{item.context}</span>
-                      <span className="flex items-center gap-2 text-xs">
-                        {item.type === 'voice' ? (
-                          <>
-                            <motion.div
-                              animate={{ 
-                                scale: [1, 1.2, 1],
-                                opacity: [0.6, 1, 0.6]
-                              }}
-                              transition={{
-                                duration: 1.5,
-                                repeat: Infinity,
-                                ease: "easeInOut"
-                              }}
-                              className="w-4 h-4 rounded-full bg-matcha-400/40 flex items-center justify-center"
-                            >
-                              🎤
-                            </motion.div>
-                            <span className="text-matcha-400/60">Voice Response</span>
-                          </>
-                        ) : (
-                          <>
-                            ⌨️
-                            <span className="text-matcha-400/60">Text Response</span>
-                          </>
-                        )}
-                      </span>
-                    </div>
-                    <div className="text-white">
+                  <div className="space-y-4">
+                    <span className="text-matcha-600 text-sm">
+                      {item.context}
+                    </span>
+                    <p className="text-stone-700 font-medium">
                       {item.question}
-                    </div>
-
-                    {/* Response Area */}
-                    <div className="mt-4 flex items-center gap-3">
-                      {item.type === 'voice' ? (
+                    </p>
+                    <div className="flex justify-between items-center">
+                      <div className="h-2 bg-matcha-500/10 rounded-full w-16">
                         <motion.div
-                          animate={{
-                            opacity: [0.4, 1, 0.4],
-                            scaleY: [0.5, 1, 0.5]
-                          }}
+                          className="h-full w-full bg-matcha-500/40 rounded-full origin-left"
+                          initial={{ scaleX: 0 }}
+                          animate={{ scaleX: 1 }}
                           transition={{
-                            duration: 1.5,
-                            repeat: Infinity,
-                            ease: "easeInOut"
+                            delay: index * 0.5 + 0.2,
+                            duration: 0.5,
+                            ease: "easeOut"
                           }}
-                          className="flex gap-1"
-                        >
-                          {[...Array(5)].map((_, i) => (
-                            <div
-                              key={i}
-                              className="w-0.5 h-4 bg-matcha-400/60 rounded-full"
-                              style={{
-                                animationDelay: `${i * 0.1}s`
-                              }}
-                            />
-                          ))}
-                        </motion.div>
-                      ) : (
-                        <motion.div
-                          animate={{ opacity: [1, 0] }}
-                          transition={{
-                            duration: 0.8,
-                            repeat: Infinity,
-                            repeatType: "reverse",
-                            delay: index * 0.5 + 0.3
-                          }}
-                          className="w-2 h-4 bg-matcha-400/60"
                         />
-                      )}
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-stone-500 text-sm">
+                          {item.type === 'voice' ? 'Voice Response' : 'Text Response'}
+                        </span>
+                        {item.type === 'voice' ? (
+                          <motion.div
+                            animate={{
+                              opacity: [0.4, 1, 0.4],
+                              scaleY: [0.5, 1, 0.5]
+                            }}
+                            transition={{
+                              duration: 1.5,
+                              repeat: Infinity,
+                              ease: "easeInOut"
+                            }}
+                            className="flex gap-1"
+                          >
+                            {[...Array(5)].map((_, i) => (
+                              <div
+                                key={i}
+                                className="w-0.5 h-4 bg-matcha-400/60 rounded-full"
+                                style={{
+                                  animationDelay: `${i * 0.1}s`
+                                }}
+                              />
+                            ))}
+                          </motion.div>
+                        ) : (
+                          <motion.div
+                            animate={{ opacity: [1, 0] }}
+                            transition={{
+                              duration: 0.8,
+                              repeat: Infinity,
+                              repeatType: "reverse",
+                              delay: index * 0.5 + 0.3
+                            }}
+                            className="w-2 h-4 bg-matcha-400/60"
+                          />
+                        )}
+                      </div>
                     </div>
                   </div>
                 </motion.div>

@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import useIsMobile from "@/hooks/useIsMobile"
 
 export default function Navigation() {
-  const [activeModal, setActiveModal] = useState<'about' | 'contact' | null>(null)
+  const [activeModal, setActiveModal] = useState<'about' | null>(null)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const isMobile = useIsMobile()
 
@@ -58,13 +58,6 @@ export default function Navigation() {
           >
             About
           </button>
-          <span className="text-stone-400 mx-4">|</span>
-          <button
-            onClick={() => setActiveModal('contact')}
-            className="text-stone-600 hover:text-stone-800 transition-colors text-base px-4 py-2"
-          >
-            Contact
-          </button>
           <span className="text-stone-400 text-2xl ml-4">]</span>
         </div>
 
@@ -92,7 +85,7 @@ export default function Navigation() {
               exit={{ opacity: 0, y: -20 }}
               className="absolute top-full left-0 right-0 bg-white/80 backdrop-blur-sm shadow-lg"
             >
-              <div className="p-4 space-y-4">
+              <div className="p-4">
                 <button
                   onClick={() => {
                     setActiveModal('about')
@@ -102,15 +95,6 @@ export default function Navigation() {
                 >
                   About
                 </button>
-                <button
-                  onClick={() => {
-                    setActiveModal('contact')
-                    setIsMenuOpen(false)
-                  }}
-                  className="block w-full py-2 text-stone-800 hover:text-matcha-600 text-left"
-                >
-                  Contact
-                </button>
               </div>
             </motion.div>
           )}
@@ -119,7 +103,7 @@ export default function Navigation() {
 
       {/* Modal */}
       <AnimatePresence mode="wait">
-        {activeModal && (
+        {activeModal === 'about' && (
           <div className="fixed inset-0 flex items-center justify-center">
             {/* Backdrop */}
             <motion.div 
@@ -147,130 +131,65 @@ export default function Navigation() {
                 ×
               </button>
 
-              {activeModal === 'about' && (
-                <motion.div 
-                  className={`space-y-${isMobile ? '4' : '6'}`}
-                  variants={modalVariants}
+              <motion.div 
+                className={`space-y-${isMobile ? '4' : '6'}`}
+                variants={modalVariants}
+              >
+                <motion.h2 
+                  className={`${isMobile ? 'text-xl' : 'text-4xl'} font-primary text-stone-800`}
+                  variants={itemVariants}
                 >
-                  <motion.h2 
-                    className={`${isMobile ? 'text-xl' : 'text-4xl'} font-primary text-stone-800`}
+                  ABOUT MATCHA
+                </motion.h2>
+
+                <div className={`space-y-${isMobile ? '4' : '6'} ${isMobile ? 'text-sm' : 'text-lg'} text-stone-600 font-body`}>
+                  <motion.div 
+                    className={`space-y-${isMobile ? '2' : '4'}`}
                     variants={itemVariants}
                   >
-                    ABOUT MATCHA
-                  </motion.h2>
-
-                  <div className={`space-y-${isMobile ? '4' : '6'} ${isMobile ? 'text-sm' : 'text-lg'} text-stone-600 font-body`}>
-                    <motion.div 
-                      className={`space-y-${isMobile ? '2' : '4'}`}
-                      variants={itemVariants}
-                    >
-                      <h3 className={`${isMobile ? 'text-lg' : 'text-2xl'} text-stone-800 font-primary`}>The Problem</h3>
-                      <p>
-                        The current recruitment landscape is fractured and inefficient. Job seekers navigate 
-                        a frustrating maze of disconnected platforms, while employers waste resources 
-                        managing multiple recruitment tools and sifting through countless applications.
-                      </p>
-                    </motion.div>
-
-                    <motion.div 
-                      className={`space-y-${isMobile ? '2' : '4'}`}
-                      variants={itemVariants}
-                    >
-                      <h3 className={`${isMobile ? 'text-lg' : 'text-2xl'} text-stone-800 font-primary`}>Our Solution</h3>
-                      <p>
-                        Matcha is a revolutionary AI-driven recruitment platform that unifies the entire 
-                        hiring process. We provide intelligent job matching for candidates and sophisticated 
-                        recruitment automation for employers, creating perfect matches while reducing 
-                        operational inefficiency.
-                      </p>
-                    </motion.div>
-
-                    <motion.div 
-                      className={`${isMobile ? 'flex-col space-y-3' : 'flex gap-4'} mt-${isMobile ? '4' : '6'}`}
-                      variants={itemVariants}
-                    >
-                      <div className="flex-1 p-3 bg-stone-50 rounded-lg border border-stone-100">
-                        <h4 className={`${isMobile ? 'text-base' : 'text-xl'} text-matcha-800 font-primary mb-2`}>For Candidates</h4>
-                        <p className={`${isMobile ? 'text-xs' : 'text-sm'}`}>
-                          Maintain one comprehensive profile and receive curated job opportunities that 
-                          align with both your experience and preferences.
-                        </p>
-                      </div>
-
-                      <div className="flex-1 p-3 bg-stone-50 rounded-lg border border-stone-100">
-                        <h4 className={`${isMobile ? 'text-base' : 'text-xl'} text-matcha-800 font-primary mb-2`}>For Employers</h4>
-                        <p className={`${isMobile ? 'text-xs' : 'text-sm'}`}>
-                          Access sophisticated AI-driven recruitment tools with streamlined interview 
-                          pipelines and robust talent sourcing capabilities.
-                        </p>
-                      </div>
-                    </motion.div>
-                  </div>
-                </motion.div>
-              )}
-
-              {activeModal === 'contact' && (
-                <motion.div 
-                  className="space-y-8"
-                  variants={modalVariants}
-                >
-                  <motion.h2 
-                    className="text-4xl font-primary text-stone-800"
-                    variants={itemVariants}
-                  >
-                    CONTACT
-                  </motion.h2>
+                    <h3 className={`${isMobile ? 'text-lg' : 'text-2xl'} text-stone-800 font-primary`}>The Problem</h3>
+                    <p>
+                      The current recruitment landscape is fractured and inefficient. Job seekers navigate 
+                      a frustrating maze of disconnected platforms, while employers waste resources 
+                      managing multiple recruitment tools and sifting through countless applications.
+                    </p>
+                  </motion.div>
 
                   <motion.div 
-                    className="space-y-6"
+                    className={`space-y-${isMobile ? '2' : '4'}`}
                     variants={itemVariants}
                   >
-                    <p className="text-lg text-stone-600 font-body">
-                      Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+                    <h3 className={`${isMobile ? 'text-lg' : 'text-2xl'} text-stone-800 font-primary`}>Our Solution</h3>
+                    <p>
+                      Matcha is a revolutionary AI-driven recruitment platform that unifies the entire 
+                      hiring process. We provide intelligent job matching for candidates and sophisticated 
+                      recruitment automation for employers, creating perfect matches while reducing 
+                      operational inefficiency.
                     </p>
-
-                    <form className="space-y-4">
-                      <motion.div 
-                        className="space-y-2"
-                        variants={itemVariants}
-                      >
-                        <input
-                          type="text"
-                          placeholder="Name"
-                          className="w-full p-3 border border-stone-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-matcha-400"
-                        />
-                      </motion.div>
-                      <motion.div 
-                        className="space-y-2"
-                        variants={itemVariants}
-                      >
-                        <input
-                          type="email"
-                          placeholder="Email"
-                          className="w-full p-3 border border-stone-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-matcha-400"
-                        />
-                      </motion.div>
-                      <motion.div 
-                        className="space-y-2"
-                        variants={itemVariants}
-                      >
-                        <textarea
-                          placeholder="Message"
-                          rows={4}
-                          className="w-full p-3 border border-stone-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-matcha-400"
-                        />
-                      </motion.div>
-                      <motion.button
-                        variants={itemVariants}
-                        type="submit"
-                        className="w-full bg-stone-900 text-white py-3 rounded-lg hover:bg-stone-800 transition-colors"
-                      >
-                        Send Message
-                      </motion.button>
-                    </form>
                   </motion.div>
-                </motion.div>
-              )}
+
+                  <motion.div 
+                    className={`${isMobile ? 'flex-col space-y-3' : 'flex gap-4'} mt-${isMobile ? '4' : '6'}`}
+                    variants={itemVariants}
+                  >
+                    <div className="flex-1 p-3 bg-stone-50 rounded-lg border border-stone-100">
+                      <h4 className={`${isMobile ? 'text-base' : 'text-xl'} text-matcha-800 font-primary mb-2`}>For Candidates</h4>
+                      <p className={`${isMobile ? 'text-xs' : 'text-sm'}`}>
+                        Maintain one comprehensive profile and receive curated job opportunities that 
+                        align with both your experience and preferences.
+                      </p>
+                    </div>
+
+                    <div className="flex-1 p-3 bg-stone-50 rounded-lg border border-stone-100">
+                      <h4 className={`${isMobile ? 'text-base' : 'text-xl'} text-matcha-800 font-primary mb-2`}>For Employers</h4>
+                      <p className={`${isMobile ? 'text-xs' : 'text-sm'}`}>
+                        Access sophisticated AI-driven recruitment tools with streamlined interview 
+                        pipelines and robust talent sourcing capabilities.
+                      </p>
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
             </motion.div>
           </div>
         )}
