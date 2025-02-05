@@ -149,22 +149,22 @@ export default function Navigation() {
 
               {activeModal === 'about' && (
                 <motion.div 
-                  className="space-y-10"
+                  className="space-y-6"
                   variants={modalVariants}
                 >
                   <motion.h2 
-                    className="text-4xl font-primary text-stone-800"
+                    className={`${isMobile ? 'text-2xl' : 'text-4xl'} font-primary text-stone-800`}
                     variants={itemVariants}
                   >
                     ABOUT MATCHA
                   </motion.h2>
 
-                  <div className="space-y-8 text-lg text-stone-600 font-body">
+                  <div className={`space-y-6 ${isMobile ? 'text-base' : 'text-lg'} text-stone-600 font-body`}>
                     <motion.div 
-                      className="space-y-6"
+                      className="space-y-4"
                       variants={itemVariants}
                     >
-                      <h3 className="text-2xl text-stone-800 font-primary">The Problem</h3>
+                      <h3 className={`${isMobile ? 'text-xl' : 'text-2xl'} text-stone-800 font-primary`}>The Problem</h3>
                       <p>
                         The current recruitment landscape is fractured and inefficient. Job seekers navigate 
                         a frustrating maze of disconnected platforms, while employers waste resources 
@@ -173,10 +173,10 @@ export default function Navigation() {
                     </motion.div>
 
                     <motion.div 
-                      className="space-y-6"
+                      className="space-y-4"
                       variants={itemVariants}
                     >
-                      <h3 className="text-2xl text-stone-800 font-primary">Our Solution</h3>
+                      <h3 className={`${isMobile ? 'text-xl' : 'text-2xl'} text-stone-800 font-primary`}>Our Solution</h3>
                       <p>
                         Matcha is a revolutionary AI-driven recruitment platform that unifies the entire 
                         hiring process. We provide intelligent job matching for candidates and sophisticated 
@@ -186,20 +186,20 @@ export default function Navigation() {
                     </motion.div>
 
                     <motion.div 
-                      className="flex gap-8 mt-8"
+                      className={`${isMobile ? 'flex-col' : 'flex'} gap-4 mt-6`}
                       variants={itemVariants}
                     >
-                      <div className="flex-1 p-6 bg-stone-50 rounded-lg border border-stone-100">
-                        <h4 className="text-xl text-matcha-800 font-primary mb-4">For Candidates</h4>
-                        <p className="text-base">
+                      <div className={`flex-1 ${isMobile ? 'mb-4' : ''} p-4 bg-stone-50 rounded-lg border border-stone-100`}>
+                        <h4 className={`${isMobile ? 'text-lg' : 'text-xl'} text-matcha-800 font-primary mb-3`}>For Candidates</h4>
+                        <p className="text-sm">
                           Maintain one comprehensive profile and receive curated job opportunities that 
                           align with both your experience and preferences.
                         </p>
                       </div>
 
-                      <div className="flex-1 p-6 bg-stone-50 rounded-lg border border-stone-100">
-                        <h4 className="text-xl text-matcha-800 font-primary mb-4">For Employers</h4>
-                        <p className="text-base">
+                      <div className="flex-1 p-4 bg-stone-50 rounded-lg border border-stone-100">
+                        <h4 className={`${isMobile ? 'text-lg' : 'text-xl'} text-matcha-800 font-primary mb-3`}>For Employers</h4>
+                        <p className="text-sm">
                           Access sophisticated AI-driven recruitment tools with streamlined interview 
                           pipelines and robust talent sourcing capabilities.
                         </p>
