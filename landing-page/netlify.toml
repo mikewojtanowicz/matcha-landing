@@ -6,11 +6,11 @@
   package = "@netlify/plugin-nextjs"
 
 [build.environment]
-  NETLIFY_NEXT_PLUGIN_SKIP = "true"
   NEXT_USE_NETLIFY_EDGE = "true"
   NEXT_FORCE_EDGE_IMAGES = "true"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200 
+# Remove the redirect as Next.js will handle routing
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200 
