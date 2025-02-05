@@ -206,7 +206,6 @@ export default function CompetitorComparison() {
                     {['linkedin', 'ziprecruiter', 'indeed', 'matcha'].map((company) => (
                       <th key={company} className="py-8 px-6 text-center">
                         <motion.div
-                          as="div"
                           whileHover={{ scale: 1.05 }}
                           className="inline-flex flex-col items-center space-y-4"
                         >
@@ -282,13 +281,11 @@ export default function CompetitorComparison() {
                       {Object.entries(feature.competitors).map(([competitor, hasFeature]) => (
                         <td key={competitor} className="py-4 px-6 text-center">
                           <motion.div
-                            as="div"
                             initial={false}
                             animate={hoveredFeature === feature.name ? { scale: 1.1 } : { scale: 1 }}
                           >
                             {hasFeature ? (
                               <motion.div
-                                as="div"
                                 initial={{ scale: 0 }}
                                 animate={{ scale: 1 }}
                                 className={`
@@ -302,7 +299,6 @@ export default function CompetitorComparison() {
                               </motion.div>
                             ) : (
                               <motion.div
-                                as="div"
                                 initial={{ scale: 0 }}
                                 animate={{ scale: 1 }}
                                 className="w-6 h-6 mx-auto rounded-full bg-red-100 flex items-center justify-center"
