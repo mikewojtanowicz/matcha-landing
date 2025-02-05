@@ -25,7 +25,7 @@ export default function ResumeAnalysis() {
   return (
     <section className="w-screen min-w-screen bg-cream-50">
       <div className="w-full max-w-6xl mx-auto px-6 py-24">
-        <div ref={containerRef} className={`grid ${isMobile ? 'grid-cols-1 gap-8' : 'grid-cols-2 gap-12'}`}>
+        <div ref={containerRef} className={`grid ${isMobile ? 'grid-cols-1 gap-4' : 'grid-cols-2 gap-12'}`}>
           {/* Left side - Description */}
           <div className="flex items-center">
             <div className="space-y-6">
@@ -40,7 +40,11 @@ export default function ResumeAnalysis() {
           </div>
 
           {/* Right side - Animation */}
-          <div className={`relative ${isMobile ? 'h-[400px]' : 'h-[460px]'} flex items-center justify-center`}>
+          <div className={`relative ${
+            isMobile 
+              ? 'h-[360px] -mt-8 mb-12' 
+              : 'h-[460px]'
+          } flex items-center justify-center`}>
             <div className={`relative ${isMobile ? 'w-full max-w-[400px]' : 'w-[500px]'} h-[400px]`}>
               {/* Resume */}
               <motion.div

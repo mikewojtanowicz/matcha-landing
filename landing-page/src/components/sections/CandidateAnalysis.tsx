@@ -15,7 +15,7 @@ export default function CandidateAnalysis() {
   return (
     <section className="w-screen min-w-screen bg-stone-100">
       <div className="w-full max-w-6xl mx-auto px-6 py-24">
-        <div className={`grid ${isMobile ? 'grid-cols-1 gap-8' : 'grid-cols-2 gap-12'}`}>
+        <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12">
           {/* Left side - Content */}
           <div className="flex items-center">
             <div className="space-y-6">
@@ -31,12 +31,12 @@ export default function CandidateAnalysis() {
           </div>
 
           {/* Right side - ML Analysis Animation */}
-          <div className={`relative ${isMobile ? 'h-[400px]' : 'h-[460px]'} flex items-center ${isMobile ? 'justify-center' : 'justify-end'}`}>
+          <div className={`relative ${isMobile ? 'h-[500px]' : 'h-[460px]'} flex items-center justify-center md:justify-end mt-8 md:mt-0`}>
             {/* Resume Card */}
             <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              className={`relative ${isMobile ? 'w-full max-w-[300px]' : 'w-[345px]'} h-[460px] 
+              className={`relative ${isMobile ? 'w-full max-w-[320px]' : 'w-[345px]'} h-[460px] 
                          bg-white backdrop-blur-lg rounded-lg border-2 
                          border-matcha-500/20 p-8 overflow-hidden`}
             >

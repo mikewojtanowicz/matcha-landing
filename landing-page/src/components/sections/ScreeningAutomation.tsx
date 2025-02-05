@@ -1,8 +1,11 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import useIsMobile from '@/hooks/useIsMobile'
 
 export default function ScreeningAutomation() {
+  const isMobile = useIsMobile()
+
   const screeningExample = [
     {
       context: "Based on your React experience:",
@@ -24,7 +27,7 @@ export default function ScreeningAutomation() {
   return (
     <section className="w-full min-w-full bg-cream-50 min-w-[100vw]">
       <div className="py-12 md:py-24 px-6 max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+        <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12">
           {/* Left side - Content */}
           <div className="flex items-center">
             <div className="space-y-6">
@@ -39,9 +42,9 @@ export default function ScreeningAutomation() {
             </div>
           </div>
 
-          {/* Right side - Question Generation Animation */}
-          <div className="relative h-[400px] flex items-center justify-end">
-            <div className="w-[500px] space-y-4">
+          {/* Right side - Adjust height for mobile */}
+          <div className={`relative ${isMobile ? 'h-[500px]' : 'h-[400px]'} flex items-center justify-end mt-8 md:mt-0`}>
+            <div className={`${isMobile ? 'w-full' : 'w-[500px]'} space-y-4`}>
               {screeningExample.map((item, index) => (
                 <motion.div
                   key={index}
