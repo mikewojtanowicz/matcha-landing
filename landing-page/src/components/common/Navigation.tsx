@@ -149,22 +149,22 @@ export default function Navigation() {
 
               {activeModal === 'about' && (
                 <motion.div 
-                  className="space-y-6"
+                  className={`space-y-${isMobile ? '4' : '6'}`}
                   variants={modalVariants}
                 >
                   <motion.h2 
-                    className={`${isMobile ? 'text-2xl' : 'text-4xl'} font-primary text-stone-800`}
+                    className={`${isMobile ? 'text-xl' : 'text-4xl'} font-primary text-stone-800`}
                     variants={itemVariants}
                   >
                     ABOUT MATCHA
                   </motion.h2>
 
-                  <div className={`space-y-6 ${isMobile ? 'text-base' : 'text-lg'} text-stone-600 font-body`}>
+                  <div className={`space-y-${isMobile ? '4' : '6'} ${isMobile ? 'text-sm' : 'text-lg'} text-stone-600 font-body`}>
                     <motion.div 
-                      className="space-y-4"
+                      className={`space-y-${isMobile ? '2' : '4'}`}
                       variants={itemVariants}
                     >
-                      <h3 className={`${isMobile ? 'text-xl' : 'text-2xl'} text-stone-800 font-primary`}>The Problem</h3>
+                      <h3 className={`${isMobile ? 'text-lg' : 'text-2xl'} text-stone-800 font-primary`}>The Problem</h3>
                       <p>
                         The current recruitment landscape is fractured and inefficient. Job seekers navigate 
                         a frustrating maze of disconnected platforms, while employers waste resources 
@@ -173,10 +173,10 @@ export default function Navigation() {
                     </motion.div>
 
                     <motion.div 
-                      className="space-y-4"
+                      className={`space-y-${isMobile ? '2' : '4'}`}
                       variants={itemVariants}
                     >
-                      <h3 className={`${isMobile ? 'text-xl' : 'text-2xl'} text-stone-800 font-primary`}>Our Solution</h3>
+                      <h3 className={`${isMobile ? 'text-lg' : 'text-2xl'} text-stone-800 font-primary`}>Our Solution</h3>
                       <p>
                         Matcha is a revolutionary AI-driven recruitment platform that unifies the entire 
                         hiring process. We provide intelligent job matching for candidates and sophisticated 
@@ -186,20 +186,20 @@ export default function Navigation() {
                     </motion.div>
 
                     <motion.div 
-                      className={`${isMobile ? 'flex-col' : 'flex'} gap-4 mt-6`}
+                      className={`${isMobile ? 'flex-col space-y-3' : 'flex gap-4'} mt-${isMobile ? '4' : '6'}`}
                       variants={itemVariants}
                     >
-                      <div className={`flex-1 ${isMobile ? 'mb-4' : ''} p-4 bg-stone-50 rounded-lg border border-stone-100`}>
-                        <h4 className={`${isMobile ? 'text-lg' : 'text-xl'} text-matcha-800 font-primary mb-3`}>For Candidates</h4>
-                        <p className="text-sm">
+                      <div className="flex-1 p-3 bg-stone-50 rounded-lg border border-stone-100">
+                        <h4 className={`${isMobile ? 'text-base' : 'text-xl'} text-matcha-800 font-primary mb-2`}>For Candidates</h4>
+                        <p className={`${isMobile ? 'text-xs' : 'text-sm'}`}>
                           Maintain one comprehensive profile and receive curated job opportunities that 
                           align with both your experience and preferences.
                         </p>
                       </div>
 
-                      <div className="flex-1 p-4 bg-stone-50 rounded-lg border border-stone-100">
-                        <h4 className={`${isMobile ? 'text-lg' : 'text-xl'} text-matcha-800 font-primary mb-3`}>For Employers</h4>
-                        <p className="text-sm">
+                      <div className="flex-1 p-3 bg-stone-50 rounded-lg border border-stone-100">
+                        <h4 className={`${isMobile ? 'text-base' : 'text-xl'} text-matcha-800 font-primary mb-2`}>For Employers</h4>
+                        <p className={`${isMobile ? 'text-xs' : 'text-sm'}`}>
                           Access sophisticated AI-driven recruitment tools with streamlined interview 
                           pipelines and robust talent sourcing capabilities.
                         </p>
