@@ -6,6 +6,7 @@ import useIsMobile from "@/hooks/useIsMobile"
 
 export default function Navigation() {
   const [activeModal, setActiveModal] = useState<'about' | 'contact' | null>(null)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const isMobile = useIsMobile()
 
   const closeModal = () => setActiveModal(null)
@@ -41,10 +42,15 @@ export default function Navigation() {
   }
 
   return (
-    <nav className="absolute top-0 left-0 right-0 z-50">
-      <div className="flex justify-between items-center px-8 pt-8">
-        {/* Navigation Links */}
-        <div className="flex items-center gap-4">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm">
+      <div className="flex justify-between items-center px-4 md:px-8 py-4 md:py-6">
+        {/* Logo */}
+        <div className="relative w-24 md:w-32">
+          {/* Your logo */}
+        </div>
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-8">
           <span className={`text-stone-400 ${isMobile ? 'text-[12px] mr-1' : 'text-2xl mr-4'}`}>[</span>
           <button
             onClick={() => setActiveModal('about')}
@@ -63,6 +69,43 @@ export default function Navigation() {
           </button>
           <span className={`text-stone-400 ${isMobile ? 'text-[12px] ml-1' : 'text-2xl ml-4'}`}>]</span>
         </div>
+
+        {/* Mobile Menu Button */}
+        <button 
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="md:hidden p-2"
+        >
+          <motion.div
+            animate={isMenuOpen ? "open" : "closed"}
+            className="space-y-2"
+          >
+            <motion.span className="block w-6 h-0.5 bg-stone-800" />
+            <motion.span className="block w-6 h-0.5 bg-stone-800" />
+            <motion.span className="block w-6 h-0.5 bg-stone-800" />
+          </motion.div>
+        </button>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="absolute top-full left-0 right-0 bg-white shadow-lg"
+            >
+              <div className="p-4 space-y-4">
+                {/* Mobile menu items */}
+                <a href="#" className="block py-2 text-stone-800 hover:text-matcha-600">
+                  About
+                </a>
+                <a href="#" className="block py-2 text-stone-800 hover:text-matcha-600">
+                  Contact
+                </a>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Modal */}

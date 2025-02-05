@@ -42,7 +42,7 @@ export default function EmailSignup({ className = "" }) {
         data-netlify="true"
         netlify-honeypot="bot-field"
         onSubmit={handleSubmit} 
-        className="relative max-w-md mx-auto"
+        className="relative max-w-full md:max-w-md mx-auto"
       >
         {/* Netlify form requirements */}
         <input type="hidden" name="form-name" value="email-signup" />
@@ -51,7 +51,7 @@ export default function EmailSignup({ className = "" }) {
         </div>
 
         {/* Rest of your form JSX */}
-        <div className="relative flex items-center px-4">
+        <div className="relative flex flex-col md:flex-row items-center gap-4 md:gap-0 px-4">
           <input
             type="email"
             name="email"
@@ -59,7 +59,7 @@ export default function EmailSignup({ className = "" }) {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
             disabled={status === 'submitting' || status === 'success'}
-            className="flex-1 px-0 py-2.5 bg-transparent text-matcha-800 text-base
+            className="w-full md:flex-1 px-0 py-2.5 bg-transparent text-matcha-800 text-base
                      placeholder:text-matcha-800/60 placeholder:text-base
                      focus:outline-none
                      disabled:opacity-50 disabled:cursor-not-allowed"
@@ -70,7 +70,7 @@ export default function EmailSignup({ className = "" }) {
             disabled={!email || status !== 'idle'}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="text-matcha-800 font-medium text-sm tracking-wider pl-4
+            className="w-full md:w-auto text-matcha-800 font-medium text-sm tracking-wider md:pl-4
                      disabled:opacity-50 disabled:cursor-not-allowed
                      hover:text-matcha-600 transition-colors whitespace-nowrap"
           >
