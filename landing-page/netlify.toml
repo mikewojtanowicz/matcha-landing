@@ -5,20 +5,12 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Add environment variable to skip Next.js plugin
 [build.environment]
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
+  NEXT_USE_NETLIFY_EDGE = "true"
+  NEXT_FORCE_EDGE_IMAGES = "true"
 
-# Add this to handle client-side routing
 [[redirects]]
   from = "/*"
   to = "/index.html"
-  status = 200
-
-# Add environment variable to use Netlify Edge
-[build.environment]
-  NEXT_USE_NETLIFY_EDGE = "true"
-
-# Add environment variable to force edge images
-[build.environment]
-  NEXT_FORCE_EDGE_IMAGES = "true" 
+  status = 200 
