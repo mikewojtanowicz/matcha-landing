@@ -2,11 +2,13 @@
 
 import { motion, useAnimationControls, useInView } from 'framer-motion'
 import { useEffect, useRef } from 'react'
+import useIsMobile from '@/hooks/useIsMobile'
 
 export default function ResumeAnalysis() {
   const containerRef = useRef(null)
   const isInView = useInView(containerRef, { once: true, margin: "-100px" })
   const controls = useAnimationControls()
+  const isMobile = useIsMobile()
 
   useEffect(() => {
     if (isInView) {
@@ -21,38 +23,40 @@ export default function ResumeAnalysis() {
   ]
 
   return (
-    <section className="w-full min-w-full bg-cream-50 min-w-[100vw]">
-      <div className="py-24 px-6 max-w-6xl mx-auto">
-        <div ref={containerRef} className="flex items-center justify-between w-full">
+    <section className="w-screen min-w-screen bg-cream-50">
+      <div className="w-full max-w-6xl mx-auto px-6 py-24">
+        <div ref={containerRef} className={`grid ${isMobile ? 'grid-cols-1 gap-8' : 'grid-cols-2 gap-12'}`}>
           {/* Left side - Description */}
-          <div className="w-1/2 pr-12 space-y-6">
-            <h2 className="flowing-gradient-gold text-transparent text-4xl md:text-5xl font-bold">
-              Smart Resume Analysis
-            </h2>
-            <p className="text-stone-600 text-lg leading-relaxed">
-              Upload your resume and let our AI do the work. We analyze your experience
-              and skills to find the perfect matches from thousands of opportunities.
-            </p>
+          <div className="flex items-center">
+            <div className="space-y-6">
+              <h2 className="flowing-gradient-gold text-transparent text-4xl md:text-5xl font-bold">
+                Smart Resume Analysis
+              </h2>
+              <p className="text-stone-600 text-lg leading-relaxed">
+                Upload your resume and let our AI do the work. We analyze your experience
+                and skills to find the perfect matches from thousands of opportunities.
+              </p>
+            </div>
           </div>
 
           {/* Right side - Animation */}
-          <div className="w-1/2 flex justify-center">
-            <div className="relative w-[500px] h-[400px]">
+          <div className={`relative ${isMobile ? 'h-[400px]' : 'h-[460px]'} flex items-center justify-center`}>
+            <div className={`relative ${isMobile ? 'w-full max-w-[400px]' : 'w-[500px]'} h-[400px]`}>
               {/* Resume */}
               <motion.div
                 variants={{
                   hidden: { x: -100, opacity: 0 },
                   visible: {
-                    x: 200,
+                    x: isMobile ? 200 : 500,
                     opacity: [0, 1, 1, 0],
                     transition: { duration: 2 }
                   }
                 }}
                 initial="hidden"
                 animate={controls}
-                className="absolute left-0 top-1/2 -translate-y-1/2 w-64 h-80 
+                className={`absolute left-0 top-1/2 -translate-y-1/2 ${isMobile ? 'w-56' : 'w-64'} h-80 
                            bg-white backdrop-blur-sm rounded-lg border 
-                           border-matcha-500/20 p-6"
+                           border-matcha-500/20 p-6`}
               >
                 <div className="space-y-4">
                   <div className="flex items-center gap-4">
@@ -75,7 +79,7 @@ export default function ResumeAnalysis() {
               </motion.div>
 
               {/* Job Matches */}
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 space-y-4 w-64">
+              <div className={`absolute right-0 top-1/2 -translate-y-1/2 space-y-4 ${isMobile ? 'w-56' : 'w-64'}`}>
                 {jobs.map((job, i) => (
                   <motion.div
                     key={i}
@@ -90,10 +94,12 @@ export default function ResumeAnalysis() {
                     initial="hidden"
                     animate={controls}
                     className="p-4 bg-matcha-500/10 backdrop-blur-sm rounded-lg 
-                               border border-matcha-500/20"
+                             border border-matcha-500/20"
                   >
                     <div className="flex justify-between items-center">
-                      <span className="text-matcha-400 font-medium">{job.title}</span>
+                      <span className={`text-matcha-400 font-medium ${isMobile ? 'text-sm' : ''}`}>
+                        {job.title}
+                      </span>
                       <span className="text-matcha-400/60 text-sm">{job.match}</span>
                     </div>
                   </motion.div>

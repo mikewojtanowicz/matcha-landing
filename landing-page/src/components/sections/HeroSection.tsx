@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import useIsMobile from "@/hooks/useIsMobile";
 
 const iPhoneVariants = {
   initial: {},
@@ -41,6 +42,7 @@ export default function HeroSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const [activeView, setActiveView] = useState<'candidate' | 'employer'>('candidate');
+  const isMobile = useIsMobile();
 
   const handleViewChange = (view: 'candidate' | 'employer') => {
     setActiveView(view);
@@ -48,10 +50,10 @@ export default function HeroSection() {
 
   return (
     <section className="w-screen min-w-screen bg-stone-100">
-      <div className="w-full max-w-6xl mx-auto px-6 py-24">
+      <div className="w-full max-w-6xl mx-auto px-6 py-12 md:py-24">
         <div className="flex flex-col lg:flex-row items-start justify-between gap-12">
           {/* ----------------- Content Column ----------------- */}
-          <div className="flex-1 max-w-2xl xl:max-w-3xl space-y-8">
+          <div className="flex-1 max-w-2xl xl:max-w-3xl space-y-6 md:space-y-8">
             {/* View Toggle */}
             <motion.div 
               className="p-1 rounded-xl bg-matcha-50 w-fit shadow-sm"
@@ -99,9 +101,9 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="min-h-[120px]"
+              className="min-h-[80px] md:min-h-[120px]"
             >
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
                 {activeView === 'candidate' ? (
                   <span className="bg-[linear-gradient(120deg,_#598F53_30%,_#C5A47E_80%)] bg-clip-text text-transparent">
                     One Profile, Endless Opportunities
@@ -118,15 +120,15 @@ export default function HeroSection() {
               key={activeView}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="flex flex-col gap-8"
+              className="flex flex-col gap-6 md:gap-8"
             >
-              <p className="text-xl text-stone-700 leading-relaxed">
+              <p className="text-lg md:text-xl text-stone-700 leading-relaxed">
                 {activeView === 'candidate' 
                   ? "Experience a revolutionary approach to job searching where your complete profile speaks for itself:"
                   : "Join the future of recruitment with our self-optimizing ecosystem:"}
               </p>
 
-              <ul className="space-y-4 pl-6 min-h-[160px]">
+              <ul className="space-y-3 md:space-y-4 pl-6 min-h-[120px] md:min-h-[160px]">
                 {activeView === 'candidate' ? (
                   <>
                     <motion.li 
@@ -181,171 +183,128 @@ export default function HeroSection() {
           </div>
 
           {/* ----------------- iPhone Animation Column ----------------- */}
-          <div className="flex-1 max-w-xl xl:max-w-2xl">
-            <motion.div
-              ref={ref}
-              className="relative h-[520px] hidden lg:block"
-              variants={iPhoneVariants}
-              initial="initial"
-              animate={isInView ? "animate" : "initial"}
-            >
-              {/* 1) The Outline-Tracing SVG */}
-              <motion.svg
-                className="absolute inset-0 m-auto"
-                width="280"
-                height="520"
-                viewBox="0 0 280 520"
-                fill="none"
-                stroke="url(#animatedGradient)"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                variants={outlineVariants}
-              >
-                {/* Gradient definition */}
-                <defs>
-                  <linearGradient
-                    id="animatedGradient"
-                    gradientUnits="userSpaceOnUse"
-                    x1="0%"
-                    y1="0%"
-                    x2="100%"
-                    y2="0%"
-                  >
-                    {/* Green wave */}
-                    <stop offset="0%" stopColor="#598F53">
-                      <animate
-                        attributeName="offset"
-                        values="-0.75;1.25"
-                        dur="2s"
-                        repeatCount="indefinite"
-                        keyTimes="0;1"
-                        calcMode="spline"
-                        keySplines="0.4 0 0.2 1"
-                      />
-                    </stop>
-                    <stop offset="50%" stopColor="#598F53">
-                      <animate
-                        attributeName="offset"
-                        values="-0.25;1.75"
-                        dur="2s"
-                        repeatCount="indefinite"
-                        keyTimes="0;1"
-                        calcMode="spline"
-                        keySplines="0.4 0 0.2 1"
-                      />
-                    </stop>
-                    
-                    {/* Gold wave */}
-                    <stop offset="50%" stopColor="#C5A47E">
-                      <animate
-                        attributeName="offset"
-                        values="0.25;2.25"
-                        dur="2s"
-                        repeatCount="indefinite"
-                        keyTimes="0;1"
-                        calcMode="spline"
-                        keySplines="0.4 0 0.2 1"
-                      />
-                    </stop>
-                    <stop offset="100%" stopColor="#C5A47E">
-                      <animate
-                        attributeName="offset"
-                        values="0.75;2.75"
-                        dur="2s"
-                        repeatCount="indefinite"
-                        keyTimes="0;1"
-                        calcMode="spline"
-                        keySplines="0.4 0 0.2 1"
-                      />
-                    </stop>
-                  </linearGradient>
-                </defs>
-
-                <motion.path
-                  d="M40 0h200a40 40 0 0 1 40 40v440a40 40 0 0 1-40 40H40a40 40 0 0 1-40-40V40a40 40 0 0 1 40-40z"
-                  variants={outlineVariants}
-                />
-
-                <motion.path
-                  d="M44 4h192a36 36 0 0 1 36 36v440a36 36 0 0 1-36 36H44a36 36 0 0 1-36-36V40a36 36 0 0 1 36-36z"
-                  variants={outlineVariants}
-                />
-
-                <motion.path
-                  d="
-                    M85 0
-                    h110
-                    v15
-                    a10 10 0 0 1-10 10
-                    H95
-                    a10 10 0 0 1-10-10
-                    V0
-                    Z
-                  "
-                  variants={outlineVariants}
-                />
-              </motion.svg>
-
-              {/* 2) The Actual Phone Frame */}
+          {!isMobile && (
+            <div className="flex-1 max-w-xl xl:max-w-2xl">
               <motion.div
-                className="absolute inset-0 flex items-center justify-center"
-                variants={phoneContentVariants}
+                ref={ref}
+                className="relative h-[520px]"
+                variants={iPhoneVariants}
+                initial="initial"
+                animate={isInView ? "animate" : "initial"}
               >
-                <div className="relative w-[280px] h-[520px]">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[110px] h-[25px] bg-black rounded-b-[10px] z-20">
-                    <div className="w-full h-full bg-black rounded-b-[10px] overflow-hidden">
-                      <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-stone-600 rounded-full" />
-                    </div>
+                {/* 1) The Outline-Tracing SVG */}
+                <motion.svg
+                  className="absolute inset-0 m-auto"
+                  width="280"
+                  height="520"
+                  viewBox="0 0 280 520"
+                  fill="none"
+                  stroke="url(#animatedGradient)"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  variants={outlineVariants}
+                >
+                  {/* Gradient Definition */}
+                  <defs>
+                    <linearGradient
+                      id="animatedGradient"
+                      gradientUnits="userSpaceOnUse"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="0%"
+                    >
+                      <stop offset="0%" stopColor="#598F53">
+                        <animate
+                          attributeName="offset"
+                          values="-0.75;1.25"
+                          dur="2s"
+                          repeatCount="indefinite"
+                          keyTimes="0;1"
+                          calcMode="spline"
+                          keySplines="0.4 0 0.2 1"
+                        />
+                      </stop>
+                      <stop offset="50%" stopColor="#598F53">
+                        <animate
+                          attributeName="offset"
+                          values="-0.25;1.75"
+                          dur="2s"
+                          repeatCount="indefinite"
+                          keyTimes="0;1"
+                          calcMode="spline"
+                          keySplines="0.4 0 0.2 1"
+                        />
+                      </stop>
+                      <stop offset="50%" stopColor="#C5A47E">
+                        <animate
+                          attributeName="offset"
+                          values="0.25;2.25"
+                          dur="2s"
+                          repeatCount="indefinite"
+                          keyTimes="0;1"
+                          calcMode="spline"
+                          keySplines="0.4 0 0.2 1"
+                        />
+                      </stop>
+                      <stop offset="100%" stopColor="#C5A47E">
+                        <animate
+                          attributeName="offset"
+                          values="0.75;2.75"
+                          dur="2s"
+                          repeatCount="indefinite"
+                          keyTimes="0;1"
+                          calcMode="spline"
+                          keySplines="0.4 0 0.2 1"
+                        />
+                      </stop>
+                    </linearGradient>
+                  </defs>
+
+                  {/* Updated Outer Frame: Matches the iPhone container (280×520 with 30px radius) */}
+                  <motion.path
+                    d="M30 0 H250 A30 30 0 0 1 280 30 V490 A30 30 0 0 1 250 520 H30 A30 30 0 0 1 0 490 V30 A30 30 0 0 1 30 0z"
+                    variants={outlineVariants}
+                  />
+
+                  {/* Updated Inner Frame: Matches the inset display (inset by 4px, 272×512 with 26px radius) */}
+                  <motion.path
+                    d="M30 4 H250 A26 26 0 0 1 276 30 V490 A26 26 0 0 1 250 516 H30 A26 26 0 0 1 4 490 V30 A26 26 0 0 1 30 4z"
+                    variants={outlineVariants}
+                  />
+                </motion.svg>
+
+                <motion.div
+                  className="absolute inset-0 flex items-center justify-center"
+                  variants={phoneContentVariants}
+                >
+                  <div className="relative w-[280px] h-[520px]">
+                    {/* --- Outer Frame: Titanium-Inspired Finish --- */}
+                    <div className="absolute inset-0 bg-gray-800 rounded-[30px] shadow-2xl" />
+
+                  {/* --- Inner Display (Screen) --- */}
+                  <div className="absolute inset-[4px] bg-stone-100 rounded-[26px] overflow-hidden flex items-center justify-center">
+                  <motion.video
+                    initial={{ opacity: 0, scale: 1 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 4.5, duration: 0.5 }}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    style={{ objectPosition: '50% 80%' }} // Adjust vertical position (80% down from the top)
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                  >
+                    <source src="/videos/matcha_demo.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </motion.video>
                   </div>
-
-                  <div className="absolute inset-0 bg-black rounded-[40px] shadow-2xl" />
-
-                  <div className="absolute inset-[4px] bg-stone-100 rounded-[36px] overflow-hidden">
-                    <div className="relative w-full h-full bg-gradient-to-b from-matcha-400/5 to-cream-200/20">
-                      <div className="h-12 flex items-center justify-between px-6">
-                        <span className="text-sm font-medium">9:41</span>
-                        <div className="flex items-center gap-2">
-                          <svg
-                            className="w-4 h-4"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z" />
-                          </svg>
-                          <svg
-                            className="w-4 h-4"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
-                          </svg>
-                        </div>
-                      </div>
-
-                      {/* Example "App" Content */}
-                      <div className="p-4 space-y-4">
-                        <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.4 }}
-                          className="bg-white rounded-xl p-4 shadow-sm"
-                        >
-                          <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 bg-matcha-400/20 rounded-full" />
-                            <div className="space-y-1">
-                              <div className="h-2 w-24 bg-stone-200 rounded" />
-                              <div className="h-2 w-16 bg-stone-200 rounded" />
-                            </div>
-                          </div>
-                        </motion.div>
-                      </div>
-                    </div>
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
-            </motion.div>
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </section>

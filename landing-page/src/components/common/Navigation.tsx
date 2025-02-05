@@ -2,10 +2,11 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import CountdownTimer from './CountdownTimer'
+import useIsMobile from "@/hooks/useIsMobile"
 
 export default function Navigation() {
   const [activeModal, setActiveModal] = useState<'about' | 'contact' | null>(null)
+  const isMobile = useIsMobile()
 
   const closeModal = () => setActiveModal(null)
 
@@ -40,33 +41,28 @@ export default function Navigation() {
   }
 
   return (
-    <div className="relative z-50">
-      {/* Navigation buttons */}
-      <div className="absolute top-8 left-8 flex items-center text-base tracking-wider">
-        <span className="text-stone-400 text-lg">[</span>
-        <button
-          onClick={() => setActiveModal('about')}
-          className="px-4 py-2 text-stone-600 hover:text-stone-900 transition-colors duration-300 text-lg"
-        >
-          ABOUT
-        </button>
-        <span className="mx-2 text-stone-400 select-none text-lg">|</span>
-        <button
-          onClick={() => setActiveModal('contact')}
-          className="px-4 py-2 text-stone-600 hover:text-stone-900 transition-colors duration-300 text-lg"
-        >
-          CONTACT
-        </button>
-        <span className="text-stone-400 text-lg">]</span>
-      </div>
-
-      {/* Countdown Timer */}
-      <div className="absolute top-8 right-8 flex items-center text-base tracking-wider">
-        <span className="text-stone-400 text-lg">[</span>
-        <div className="px-4 py-2">
-          <CountdownTimer />
+    <nav className="absolute top-0 left-0 right-0 z-50">
+      <div className="flex justify-between items-center px-8 pt-8">
+        {/* Navigation Links */}
+        <div className="flex items-center gap-4">
+          <span className={`text-stone-400 ${isMobile ? 'text-[12px] mr-1' : 'text-2xl mr-4'}`}>[</span>
+          <button
+            onClick={() => setActiveModal('about')}
+            className={`text-stone-600 hover:text-stone-800 transition-colors
+              ${isMobile ? 'text-[10px] px-1.5 py-0.5' : 'text-base px-4 py-2'}`}
+          >
+            About
+          </button>
+          <span className={`text-stone-400 ${isMobile ? 'mx-1' : 'mx-4'}`}>|</span>
+          <button
+            onClick={() => setActiveModal('contact')}
+            className={`text-stone-600 hover:text-stone-800 transition-colors
+              ${isMobile ? 'text-[10px] px-1.5 py-0.5' : 'text-base px-4 py-2'}`}
+          >
+            Contact
+          </button>
+          <span className={`text-stone-400 ${isMobile ? 'text-[12px] ml-1' : 'text-2xl ml-4'}`}>]</span>
         </div>
-        <span className="text-stone-400 text-lg">]</span>
       </div>
 
       {/* Modal */}
@@ -227,6 +223,6 @@ export default function Navigation() {
           </div>
         )}
       </AnimatePresence>
-    </div>
+    </nav>
   )
 }

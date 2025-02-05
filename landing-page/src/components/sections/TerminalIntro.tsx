@@ -7,7 +7,6 @@ import ScrollIndicator from "@/components/common/ScrollIndicator"
 import { AnimatePresence } from "framer-motion"
 import Navigation from "@/components/common/Navigation"
 
-// -- Variants for Framer Motion animations --
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   show: {

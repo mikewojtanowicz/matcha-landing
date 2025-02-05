@@ -7,7 +7,11 @@ type TimeLeft = {
   seconds: number
 }
 
-export default function CountdownTimer() {
+interface CountdownTimerProps {
+  isMobile?: boolean
+}
+
+export default function CountdownTimer({ isMobile }: CountdownTimerProps) {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 })
 
   useEffect(() => {
@@ -38,7 +42,9 @@ export default function CountdownTimer() {
   }
 
   return (
-    <span className="text-stone-600 uppercase tracking-wider text-lg">
+    <span className={`text-stone-600 uppercase tracking-wider
+      ${isMobile ? 'text-[10px]' : 'text-lg'}`}
+    >
       {timeLeft.days}D {padNumber(timeLeft.hours)}H {padNumber(timeLeft.minutes)}M {padNumber(timeLeft.seconds)}S
     </span>
   )

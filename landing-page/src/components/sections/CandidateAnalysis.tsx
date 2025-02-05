@@ -1,8 +1,10 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import useIsMobile from '@/hooks/useIsMobile'
 
 export default function CandidateAnalysis() {
+  const isMobile = useIsMobile()
   const factors = [
     { category: "Technical Skills", score: 92 },
     { category: "Experience", score: 88 },
@@ -13,26 +15,30 @@ export default function CandidateAnalysis() {
   return (
     <section className="w-screen min-w-screen bg-stone-100">
       <div className="w-full max-w-6xl mx-auto px-6 py-24">
-        <div className="grid grid-cols-2 gap-12">
+        <div className={`grid ${isMobile ? 'grid-cols-1 gap-8' : 'grid-cols-2 gap-12'}`}>
           {/* Left side - Content */}
-          <div className="space-y-6">
-            <h2 className="flowing-gradient-gold text-transparent bg-clip-text text-4xl md:text-5xl font-bold">
-              The Complete Candidate Profile
-            </h2>
-            <p className="text-stone-600 text-lg leading-relaxed">
-              We look at your complete background - skills, experience, education, and industry knowledge
-              to match you with roles where you'll have the highest chance of success. 
-            </p>
+          <div className="flex items-center">
+            <div className="space-y-6">
+              <h2 className="flowing-gradient-gold text-transparent bg-clip-text text-4xl md:text-5xl font-bold">
+                The Complete Candidate Profile
+              </h2>
+              <p className="text-stone-600 text-lg leading-relaxed">
+                We look at your complete background - skills, experience, education, and industry knowledge
+                to match you with roles where you'll have the highest chance of success. Our AI-powered analysis
+                provides deep insights into your strengths and potential growth areas to help you stand out to employers.
+              </p>
+            </div>
           </div>
 
           {/* Right side - ML Analysis Animation */}
-          <div className="relative h-[460px] flex items-center justify-center">
+          <div className={`relative ${isMobile ? 'h-[400px]' : 'h-[460px]'} flex items-center ${isMobile ? 'justify-center' : 'justify-end'}`}>
             {/* Resume Card */}
             <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              className="relative w-[345px] h-[460px] bg-white backdrop-blur-lg rounded-lg 
-                         border-2 border-matcha-500/20 p-8 overflow-hidden"
+              className={`relative ${isMobile ? 'w-full max-w-[300px]' : 'w-[345px]'} h-[460px] 
+                         bg-white backdrop-blur-lg rounded-lg border-2 
+                         border-matcha-500/20 p-8 overflow-hidden`}
             >
               {/* Scanning Line */}
               <motion.div

@@ -26,20 +26,22 @@ export default function ScreeningAutomation() {
       <div className="py-12 md:py-24 px-6 max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {/* Left side - Content */}
-          <div className="space-y-6">
-            <h2 className="flowing-gradient-gold text-transparent bg-clip-text text-4xl md:text-5xl font-bold">
-              Automated Screening
-            </h2>
-            <p className="text-stone-600 text-lg leading-relaxed">
-              Skip the repetitive HR calls. Our AI generates relevant screening questions 
-              based on your experience and the role requirements. Choose between typing 
-              your responses or recording them directly in the app.
-            </p>
+          <div className="flex items-center">
+            <div className="space-y-6">
+              <h2 className="flowing-gradient-gold text-transparent bg-clip-text text-4xl md:text-5xl font-bold">
+                Automated Screening
+              </h2>
+              <p className="text-stone-600 text-lg leading-relaxed">
+                Skip the repetitive HR calls. Our AI generates relevant screening questions 
+                based on your experience and the role requirements. Choose between typing 
+                your responses or recording them directly in the app.
+              </p>
+            </div>
           </div>
 
           {/* Right side - Question Generation Animation */}
-          <div className="relative h-[400px] flex items-center justify-center">
-            <div className="w-[400px] space-y-4">
+          <div className="relative h-[400px] flex items-center justify-end">
+            <div className="w-[500px] space-y-4">
               {screeningExample.map((item, index) => (
                 <motion.div
                   key={index}

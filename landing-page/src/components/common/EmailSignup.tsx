@@ -11,65 +11,36 @@ export default function EmailSignup({ className = "" }) {
     e.preventDefault()
     setStatus('submitting')
     
-    try {
-      const form = e.target as HTMLFormElement
-      const data = new FormData(form)
-      
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(data as any).toString()
-      })
+    // TODO: Implement actual email signup
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    setStatus('success')
+    setEmail('')
 
-      if (response.ok) {
-        setStatus('success')
-        setEmail('')
-        setTimeout(() => setStatus('idle'), 3000)
-      } else {
-        throw new Error('Form submission failed')
-      }
-    } catch (error) {
-      setStatus('error')
-      setTimeout(() => setStatus('idle'), 3000)
-    }
+    // Reset success message after 3 seconds
+    setTimeout(() => setStatus('idle'), 3000)
   }
 
   return (
     <div className={`mt-6 ${className}`}>
-      <form 
-        name="email-signup"
-        method="POST"
-        data-netlify="true"
-        netlify-honeypot="bot-field"
-        onSubmit={handleSubmit} 
-        className="relative max-w-md mx-auto"
-      >
-        {/* Netlify form requirements */}
-        <input type="hidden" name="form-name" value="email-signup" />
-        <div hidden>
-          <input name="bot-field" />
-        </div>
-
+      <form onSubmit={handleSubmit} className="relative max-w-md mx-auto">
         <div className="relative flex items-center px-4">
           <input
             type="email"
-            name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
             disabled={status === 'submitting' || status === 'success'}
-            className="flex-1 px-0 py-1.5 bg-transparent text-matcha-800 text-sm
-                     placeholder:text-matcha-800/60 placeholder:text-sm
+            className="flex-1 px-0 py-2.5 bg-transparent text-matcha-800 text-base
+                     placeholder:text-matcha-800/60 placeholder:text-base
                      focus:outline-none
                      disabled:opacity-50 disabled:cursor-not-allowed"
-            required
           />
           <motion.button
             type="submit"
             disabled={!email || status !== 'idle'}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="text-matcha-800 font-medium text-xs tracking-wider pl-4
+            className="text-matcha-800 font-medium text-sm tracking-wider pl-4
                      disabled:opacity-50 disabled:cursor-not-allowed
                      hover:text-matcha-600 transition-colors whitespace-nowrap"
           >
