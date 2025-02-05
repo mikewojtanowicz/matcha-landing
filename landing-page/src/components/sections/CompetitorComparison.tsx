@@ -95,7 +95,8 @@ export default function CompetitorComparison() {
       users: "900M+",
       gradient: "from-[#0A66C2] via-[#0077b5] to-[#0A66C2]",
       textGradient: "from-[#0077b5] via-[#00a0dc] to-[#0077b5]",
-      icon: "linkedin"
+      icon: "linkedin",
+      description: "Endless scrolling through irrelevant job posts, lost in a sea of cold connections."
     },
     {
       name: "ZipRecruiter",
@@ -103,6 +104,7 @@ export default function CompetitorComparison() {
       users: "110M+",
       gradient: "from-[#00E474] via-[#00FF84] to-[#00E474]",
       textGradient: "from-[#004B27] via-[#006435] to-[#004B27]",
+      description: "One-click applications flooding employer inboxes with unqualified candidates."
     },
     {
       name: "Indeed",
@@ -110,6 +112,7 @@ export default function CompetitorComparison() {
       users: "350M+",
       gradient: "from-[#2164f3] via-[#4b84ff] to-[#2164f3]",
       textGradient: "from-[#4b84ff] via-[#6b9fff] to-[#4b84ff]",
+      description: "A sea of resumes and job postings with no meaningful connections."
     },
     {
       name: "Matcha",
@@ -117,6 +120,7 @@ export default function CompetitorComparison() {
       users: "Coming Soon",
       gradient: "from-[#a6cc65] via-[#76ab70] to-[#366802]",
       textGradient: "from-[#366802] via-[#366802] to-[#366802]",
+      description: "One unified platform that works for both sides of the hiring equation."
     }
   ]
 
