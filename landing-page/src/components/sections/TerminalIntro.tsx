@@ -151,9 +151,9 @@ export default function TerminalIntro({ onComplete }: { onComplete?: () => void 
 
             {/* -- Enhanced EmailSignup styling -- */}
             <EmailSignup
-              className="max-w-sm mx-auto shadow-md shadow-matcha-400/20 
+              className="max-w-sm mx-auto shadow-md shadow-stone-400/20 
                          rounded-lg transition-all 
-                         hover:shadow-lg hover:shadow-matcha-400/30"
+                         hover:shadow-lg hover:shadow-stone-400/30"
             />
           </motion.div>
 

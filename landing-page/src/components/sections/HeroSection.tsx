@@ -56,14 +56,14 @@ export default function HeroSection() {
           <div className="flex-1 max-w-2xl xl:max-w-3xl space-y-6 md:space-y-8">
             {/* View Toggle */}
             <motion.div 
-              className="p-1 rounded-xl bg-matcha-50 w-fit shadow-sm"
+              className="p-1 rounded-xl bg-matcha-50 w-fit shadow-sm mx-auto sm:mx-0"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
             >
               <div className="relative flex">
                 <button
                   onClick={() => handleViewChange('candidate')}
-                  className={`relative px-6 py-2.5 rounded-lg text-sm font-medium z-10 transition-colors duration-200 ${
+                  className={`relative px-6 py-2.5 rounded-lg text-sm font-medium z-10 transition-colors duration-200 min-w-[155px] ${
                     activeView === 'candidate' 
                       ? 'text-matcha-900'
                       : 'text-stone-600 hover:text-stone-800'
@@ -73,7 +73,7 @@ export default function HeroSection() {
                 </button>
                 <button
                   onClick={() => handleViewChange('employer')}
-                  className={`relative px-6 py-2.5 rounded-lg text-sm font-medium z-10 transition-colors duration-200 ${
+                  className={`relative px-6 py-2.5 rounded-lg text-sm font-medium z-10 transition-colors duration-200 min-w-[155px] ${
                     activeView === 'employer' 
                       ? 'text-matcha-900'
                       : 'text-stone-600 hover:text-stone-800'
@@ -183,7 +183,7 @@ export default function HeroSection() {
           </div>
 
           {/* ----------------- iPhone Animation Column ----------------- */}
-          <div className={`${isMobile ? 'w-full' : 'flex-1 max-w-xl xl:max-w-2xl'}`}>
+          <div className={`${isMobile ? 'w-full' : 'flex-1 max-w-xl xl:max-w-2xl m-auto'}`}>
             <motion.div
               ref={ref}
               className={`relative h-[520px] ${isMobile ? 'flex justify-center' : ''}`}

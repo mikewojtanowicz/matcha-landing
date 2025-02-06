@@ -45,9 +45,10 @@ export default function CandidateAnalysis() {
                 initial={{ y: -460 }}
                 animate={{ y: 460 }}
                 transition={{
-                  duration: 2,
+                  duration: 5,
                   repeat: Infinity,
-                  ease: "linear"
+                  ease: "linear",
+                  repeatDelay: 2
                 }}
                 className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent 
                            via-matcha-400/50 to-transparent"
