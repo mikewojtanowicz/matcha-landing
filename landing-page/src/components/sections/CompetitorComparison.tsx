@@ -22,7 +22,7 @@ export default function CompetitorComparison() {
   const [isSlidingOut, setIsSlidingOut] = useState(false)
   const [direction, setDirection] = useState<"left" | "right">("left")
   const [hoveredFeature, setHoveredFeature] = useState<string | null>(null)
-  const [shouldAnimate, setShouldAnimate] = useState(false)
+  const [shouldAnimate, setShouldAnimate] = useState(true)
   const [currentComparisonIndex, setCurrentComparisonIndex] = useState(0)
 
   const features: Feature[] = [
@@ -172,15 +172,17 @@ export default function CompetitorComparison() {
     }
   }
 
-  // Replace the existing useEffect with this new one
+  // Update the intersection observer logic
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
           setShouldAnimate(true)
+        } else {
+          setShouldAnimate(false)
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.1 } // Lower threshold for earlier triggering
     )
 
     const element = document.getElementById('competitor-cards')
@@ -191,31 +193,27 @@ export default function CompetitorComparison() {
     return () => observer.disconnect()
   }, [])
 
-  // Modify the auto-swipe logic to only run when shouldAnimate is true
+  // Simplify the auto-swipe logic
   useEffect(() => {
-    if (!isSlidingOut && shouldAnimate) {
+    if (!isSlidingOut && shouldAnimate && !showComparison) {
       const isLast = currentIndex === platforms.length - 1
       const timer = setTimeout(() => {
-        if (!isSlidingOut) {
-          handleSwipe(isLast ? "right" : "left")
-        }
+        handleSwipe(isLast ? "right" : "left")
       }, 2750)
       return () => clearTimeout(timer)
     }
-  }, [currentIndex, isSlidingOut, shouldAnimate])
+  }, [currentIndex, isSlidingOut, shouldAnimate, showComparison])
 
   const handleNext = () => {
-    setCurrentComparisonIndex((prev) => {
-      const nextIndex = prev + 1;
-      return nextIndex >= features.length ? 0 : nextIndex;
-    });
+    setCurrentComparisonIndex((prev) => 
+      prev === comparisonVectors.length - 1 ? 0 : prev + 1
+    )
   }
 
   const handlePrev = () => {
-    setCurrentComparisonIndex((prev) => {
-      const nextIndex = prev - 1;
-      return nextIndex < 0 ? features.length - 1 : nextIndex;
-    });
+    setCurrentComparisonIndex((prev) => 
+      prev === 0 ? comparisonVectors.length - 1 : prev - 1
+    )
   }
 
   if (showComparison) {
@@ -236,7 +234,7 @@ export default function CompetitorComparison() {
               {isMobile ? (
                 // Mobile revolving comparison
                 <div className="relative">
-                  <AnimatePresence mode="wait" initial={false}>
+                  <AnimatePresence mode="wait">
                     <motion.div
                       key={currentComparisonIndex}
                       initial={{ opacity: 0, x: 50 }}
@@ -465,7 +463,7 @@ export default function CompetitorComparison() {
       id="competitor-cards"
       className="h-screen flex flex-col items-center justify-center relative overflow-hidden bg-stone-100"
       initial={{ opacity: 0 }}
-      animate={{ opacity: shouldAnimate ? 1 : 0 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
       <div className="relative w-[90vw] max-w-[340px] h-[480px] rounded-2xl shadow-xl overflow-hidden">

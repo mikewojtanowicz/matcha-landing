@@ -53,7 +53,12 @@ export default function ResumeAnalysis() {
                   visible: {
                     x: isMobile ? 200 : 500,
                     opacity: [0, 1, 1, 0],
-                    transition: { duration: 2 }
+                    transition: { 
+                      duration: 2,
+                      repeat: Infinity,
+                      repeatDelay: 4,
+                      repeatType: "loop"
+                    }
                   }
                 }}
                 initial="hidden"
@@ -91,8 +96,14 @@ export default function ResumeAnalysis() {
                       hidden: { x: 50, opacity: 0 },
                       visible: {
                         x: 0,
-                        opacity: 1,
-                        transition: { duration: 0.5, delay: 1.5 + (i * 0.2) }
+                        opacity: [0, 1, 1, 0],
+                        transition: { 
+                          duration: 3,
+                          delay: 1.5 + (i * 0.2),
+                          repeat: Infinity,
+                          repeatDelay: 3,
+                          repeatType: "loop"
+                        }
                       }
                     }}
                     initial="hidden"
