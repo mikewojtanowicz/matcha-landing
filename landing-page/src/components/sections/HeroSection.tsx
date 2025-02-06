@@ -183,7 +183,7 @@ export default function HeroSection() {
           </div>
 
           {/* ----------------- iPhone Animation Column ----------------- */}
-          <div className={`${isMobile ? 'w-full' : 'flex-1 max-w-xl xl:max-w-2xl'}`}>
+          <div className={`${isMobile ? 'w-full' : 'flex-1 max-w-xl xl:max-w-2xl m-auto'}`}>
             <motion.div
               ref={ref}
               className={`relative h-[520px] ${isMobile ? 'flex justify-center' : ''}`}
